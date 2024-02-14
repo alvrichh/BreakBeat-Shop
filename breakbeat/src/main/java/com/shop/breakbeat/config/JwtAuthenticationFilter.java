@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.shop.breakbeat.service.JwtService;
+import com.shop.breakbeat.service.user.JwtService;
 import com.shop.breakbeat.service.UsuarioService;
 
 
