@@ -5,6 +5,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name = "camisetas")
 public class Camiseta extends Producto {
