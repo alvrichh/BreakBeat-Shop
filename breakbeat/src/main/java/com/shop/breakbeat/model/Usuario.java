@@ -68,5 +68,9 @@ public class Usuario {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+    public void setLastName(String lastName) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setLastName'");
+    }
     
 }

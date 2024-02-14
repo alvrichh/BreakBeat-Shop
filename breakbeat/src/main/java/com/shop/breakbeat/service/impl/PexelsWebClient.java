@@ -3,6 +3,7 @@ package com.shop.breakbeat.service.impl;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.shop.breakbeat.dto.response.PexelsResponse;
 
 import jakarta.annotation.PostConstruct;
 import reactor.core.publisher.Mono;

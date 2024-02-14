@@ -9,9 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.dwes.security.dto.response.user.UsuarioResponse;
-import com.dwes.security.repository.UserRepository;
-import com.dwes.security.service.UserService;
+import com.shop.breakbeat.dto.response.user.UsuarioResponse;
+import com.shop.breakbeat.repository.UsuarioRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,7 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 	@Override
 	public List<UsuarioResponse> getAllUsers() {
-		List<UsuarioResponse> allUsers =  userRepository.findAll().stream()
+		List<UsuarioResponse> allUsers =  UsuarioRepository.findAll().stream()
 			    .map(usuario -> new UsuarioResponse(usuario.getFirstName(), usuario.getLastName(), usuario.getEmail(), usuario.getRoles().toString()))
 			    .collect(Collectors.toList());
 		 return allUsers;
