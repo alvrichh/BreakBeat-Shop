@@ -49,3 +49,10 @@ Tanto los usuarios anónimos como los registrados pueden comprar productos (tamb
 * error
 * repository
 * service
+
+# APIs
+
+## Spotify
+
+El usuario podrá iniciar sesión en su cuenta de spotify y acceder a su api
+https://developer.spotify.com
