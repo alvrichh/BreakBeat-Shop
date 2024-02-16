@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.shop.breakbeat.dto.request.SignUpRequest;
 import com.shop.breakbeat.dto.request.SigninRequest;
 import com.shop.breakbeat.dto.response.user.JwtAuthenticationResponse;
-import com.shop.breakbeat.entities.Rol;
+import com.shop.breakbeat.entities.Role;
 import com.shop.breakbeat.entities.Usuario;
 import com.shop.breakbeat.repository.UsuarioRepository;
 import com.shop.breakbeat.service.user.AuthenticationService;
@@ -46,7 +46,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.getRoles().add(Rol.ROLE_USER); // Asegúrate de que Role.USER esté definido correctamente
+        user.getRoles().add(Role.ROLE_USER); // Asegúrate de que Role.USER esté definido correctamente
         userRepository.save(user);
         String jwt = jwtService.generateToken(user);
         return JwtAuthenticationResponse.builder().token(jwt).build();

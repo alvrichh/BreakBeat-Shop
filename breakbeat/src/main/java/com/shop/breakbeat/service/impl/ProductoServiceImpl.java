@@ -4,6 +4,7 @@ package com.shop.breakbeat.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.shop.breakbeat.entities.Producto;
 import com.shop.breakbeat.error.exception.ProductoNotFoundException;
@@ -13,6 +14,7 @@ import com.shop.breakbeat.service.ProductoService;
 
 import jakarta.validation.Valid;
 
+@Service
 public class ProductoServiceImpl implements ProductoService {
 
 	 @Autowired

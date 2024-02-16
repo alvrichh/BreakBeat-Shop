@@ -48,9 +48,7 @@ public class InitializationData implements CommandLineRunner {
     	Faker faker = new Faker(new Locale("es"));
         for (int i = 0; i < 10; i++) { // Generar 10  ficticios
             Producto camiseta = new Producto();
-            camiseta.setNombre(faker.book().title());
-            camiseta.setDescripcion(faker.book().author());
-  
+            camiseta.setNombre(faker.dragonBall().character());
             productoRepository.save(camiseta);
         }
         

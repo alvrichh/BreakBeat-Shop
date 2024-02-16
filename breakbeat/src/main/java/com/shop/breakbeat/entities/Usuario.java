@@ -29,19 +29,19 @@ public class Usuario implements UserDetails{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
-    private String apellidos;
+    private String firstName;
+    private String lastName;
     @Column(unique = true)
     private String username;
     @Column(unique = true)
     private String email;
     private String password;
 
-    @ElementCollection(fetch = FetchType.EAGER, targetClass = Rol.class)
+    @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name="usuario_rol")
     @Column(name ="RolesUsuario")
-    private Set<Rol> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
 
     @Transactional
@@ -86,11 +86,11 @@ public class Usuario implements UserDetails{
 
     // Métodos setter añadidos
     public void setFirstName(String firstName) {
-        this.nombre = firstName;
+        this.firstName = firstName;
     }
 
     public void setLastName(String lastName) {
-        this.apellidos = lastName;
+        this.lastName = lastName;
     }
     
 	public String setUsername(String username) {
@@ -105,21 +105,21 @@ public class Usuario implements UserDetails{
         this.password = password;
     }
 
-    public Set<Rol> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Rol> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 	public Long getId() {
 		return id;
 	}
 	public String getFirstName() {
-		return nombre;
+		return firstName;
 	}
 	public String getLastName() {
-		return apellidos;
+		return lastName;
 	}
 	public String getEmail() {
 		return email;
