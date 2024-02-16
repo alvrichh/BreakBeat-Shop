@@ -1,4 +1,4 @@
-package com.shop.breakbeat.model;
+package com.shop.breakbeat.entities;
 
 public enum Color {
     RED,

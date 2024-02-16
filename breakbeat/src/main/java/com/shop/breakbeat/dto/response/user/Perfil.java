@@ -1,31 +1,40 @@
 package com.shop.breakbeat.dto.response.user;
 
-public class UsuarioResponse {
-	 private String firstName;
-	    private String lastName;
+public class Perfil {
+		
+		private String username;
+		private String nombre;
+		private String apellidos;
 	    private String email;
 	    private String rol;
 	    
-
-		public UsuarioResponse(String firstName, String lastName, String email, String rol) {
+	    
+		
+		public Perfil(String username, String nombre, String apellidos, String email, String rol) {
 			super();
-			this.firstName = firstName;
-			this.lastName = lastName;
+			this.username = username;
+			this.nombre = nombre;
+			this.apellidos = apellidos;
 			this.email = email;
 			this.rol = rol;
 		}
-
-		public String getFirstName() {
-			return firstName;
+		public String getUsername() {
+			return username;
 		}
-		public void setFirstName(String firstName) {
-			this.firstName = firstName;
+		public void setUsername(String username) {
+			this.username = username;
 		}
-		public String getLastName() {
-			return lastName;
+		public String getNombre() {
+			return nombre;
 		}
-		public void setLastName(String lastName) {
-			this.lastName = lastName;
+		public void setNombre(String nombre) {
+			this.nombre = nombre;
+		}
+		public String getApellidos() {
+			return apellidos;
+		}
+		public void setApellidos(String apellidos) {
+			this.apellidos = apellidos;
 		}
 		public String getEmail() {
 			return email;
@@ -39,7 +48,6 @@ public class UsuarioResponse {
 		public void setRol(String rol) {
 			this.rol = rol;
 		}
-		
 	    
-	    
+
 }

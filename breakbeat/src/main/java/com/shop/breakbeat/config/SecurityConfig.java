@@ -22,7 +22,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.shop.breakbeat.model.Role;
+import com.shop.breakbeat.entities.Rol;
 import com.shop.breakbeat.service.UsuarioService;
 
 
@@ -42,13 +42,13 @@ public class SecurityConfig {
                 request
 
                 .requestMatchers("/api/v1/auth/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/v1/libros/**").hasAnyAuthority(Role.ROLE_USER.toString(), Role.ROLE_ADMIN.toString())
-                .requestMatchers(HttpMethod.POST, "/api/v1/libros/*/reservar/**").hasAuthority(Role.ROLE_USER.toString()) // Permite a ROLE_USER realizar reservas
+                .requestMatchers(HttpMethod.GET, "/api/v1/productos/**").hasAnyAuthority(Rol.ROLE_USER.toString(), Rol.ROLE_ADMIN.toString())
+               // .requestMatchers(HttpMethod.POST, "/api/v1/productos/*/reservar/**").hasAuthority(Rol.ROLE_USER.toString()) // Permite a ROLE_USER realizar reservas
 
-                .requestMatchers(HttpMethod.POST, "/api/v1/libros/**").hasAuthority(Role.ROLE_ADMIN.toString())
- 	           .requestMatchers(HttpMethod.PUT, "/api/v1/libros/**").hasAuthority(Role.ROLE_ADMIN.toString())
+                .requestMatchers(HttpMethod.POST, "/api/v1/libros/**").hasAuthority(Rol.ROLE_ADMIN.toString())
+ 	           .requestMatchers(HttpMethod.PUT, "/api/v1/libros/**").hasAuthority(Rol.ROLE_ADMIN.toString())
  	          
- 	           .requestMatchers(HttpMethod.DELETE, "/api/v1/libros/**").hasAuthority(Role.ROLE_ADMIN.toString())
+ 	           .requestMatchers(HttpMethod.DELETE, "/api/v1/libros/**").hasAuthority(Rol.ROLE_ADMIN.toString())
  	           	.requestMatchers("/api/v1/users/**").hasAuthority("ROLE_ADMIN")  // Modificado aquí
                 .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))

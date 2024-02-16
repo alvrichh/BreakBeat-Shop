@@ -1,4 +1,4 @@
-package com.shop.breakbeat.model;
+package com.shop.breakbeat.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +25,8 @@ public class Producto {
     @NotBlank(message = "El precio no puede estar vacío.")
     @Size(min = 0,  message = "El precio no puede ser inferior a 0.")
     private Double precio;
-
+    
+    private Categoria categoria;
     // Getters and Setters
 
 	public Long getId() {
@@ -58,6 +59,14 @@ public class Producto {
 
 	public void setPrecio(Double precio) {
 		this.precio = precio;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}    
 	
     

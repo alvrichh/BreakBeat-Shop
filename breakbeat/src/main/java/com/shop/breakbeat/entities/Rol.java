@@ -1,12 +1,8 @@
-package com.shop.breakbeat.model;
+package com.shop.breakbeat.entities;
 
-public enum Role {
+public enum Rol {
     ROLE_USER,
     ROLE_ADMIN;
 
-    public void add(Role roleUser) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
-    }
 
 }

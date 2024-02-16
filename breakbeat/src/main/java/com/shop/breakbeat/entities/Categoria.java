@@ -1,16 +1,8 @@
-package com.shop.breakbeat.model;
+package com.shop.breakbeat.entities;
 
-public enum Categorias {
-    MEN,
-    WOMEN,
-    SPORTSWEAR,
-    CASUAL,
-    FORMAL,
-    ACTIVEWEAR,
-    OUTERWEAR,
-    ELECTRONICS,
-    ACCESSORIES,
-    STICKERS,
-    SIGNAGE,
-    FLAGS
+public enum Categoria {
+CAMISETAS,
+SUDADERAS,
+GORRAS,
+PEGATINAS
 }

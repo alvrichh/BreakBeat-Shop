@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dwes.security.dto.response.user.UsuarioResponse;
-import com.dwes.security.entities.Usuario;
-import com.dwes.security.service.UserService;
+import com.shop.breakbeat.dto.response.user.Perfil;
+import com.shop.breakbeat.service.UsuarioService;
+
 
 
 @RestController
@@ -23,14 +23,14 @@ public class AuthorizationAdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AuthorizationAdminController.class);
 
    @Autowired
-	private UserService userService;
+	private UsuarioService userService;
 
 
     @GetMapping
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public ResponseEntity<List<UsuarioResponse>> showUsers() {
+    public ResponseEntity<List<Perfil>> showUsers() {
     	logger.info("## AuthorizationAdminController :: showUsers" );
-        List<UsuarioResponse> userList = userService.getAllUsers();
+        List<Perfil> userList = userService.getAllUsers();
         return ResponseEntity.ok(userList);
     }
 }

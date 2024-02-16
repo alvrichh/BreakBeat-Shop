@@ -9,8 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.github.javafaker.Faker;
-import com.shop.breakbeat.model.*;
-import com.shop.breakbeat.repository.CamisetaRepository;
+import com.shop.breakbeat.entities.*;
 import com.shop.breakbeat.repository.ProductoRepository;
 import com.shop.breakbeat.repository.UsuarioRepository;
 
@@ -21,23 +20,24 @@ public class InitializationData implements CommandLineRunner {
     @Autowired
     private UsuarioRepository usuarioRepository;
     
-    private final boolean borrarLibros = false; // Variable para controlar el borrado de datos
+    private final boolean borrarProductos = false; // Variable para controlar el borrado de datos
     
     @Autowired
-    private CamisetaRepository camisetaRepository;
+    private ProductoRepository productoRepository;
     
     @Override
     public void run(String... args) throws Exception {
     	
-    	if (borrarLibros) {
-    		camisetaRepository.deleteAll(); // Borra todos las camisetas existentes
+    	if (borrarProductos) {
+    		productoRepository.deleteAll(); // Borra todos las camisetas existentes
         }
     	
     	try {
     		// Usuario 1 - Rol USER
             Usuario usuario1 = new Usuario();
-            usuario1.setNombre("Alice");
-            usuario1.setApellidos("Johnson");
+            usuario1.setFirstName("Alice");
+            usuario1.setLastName("Johnson");
+            usuario1.setUsername("@alicia23");
             usuario1.setEmail("alice.johnson@example.com");
             usuario1.setPassword(("password123"));
             usuarioRepository.save(usuario1);
@@ -47,11 +47,11 @@ public class InitializationData implements CommandLineRunner {
     	}
     	Faker faker = new Faker(new Locale("es"));
         for (int i = 0; i < 10; i++) { // Generar 10  ficticios
-            Camiseta camiseta = new Camiseta();
+            Producto camiseta = new Producto();
             camiseta.setNombre(faker.book().title());
             camiseta.setDescripcion(faker.book().author());
   
-            camisetaRepository.save(camiseta);
+            productoRepository.save(camiseta);
         }
         
     }
