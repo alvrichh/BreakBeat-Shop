@@ -98,7 +98,7 @@ import jakarta.persistence.EntityNotFoundException;
 	    // Actualizar un libro
 	    @PutMapping("/{id}")
 	    @PreAuthorize("hasRole('ROLE_ADMIN')")
-	    public Producto updateBook(@PathVariable Long id, @RequestBody Producto productDetails) {
+	    public Producto updateProduct(@PathVariable Long id, @RequestBody Producto productDetails) {
 	        return productoService.actualizarProducto(id, productDetails);
 	    }
 
@@ -111,7 +111,7 @@ import jakarta.persistence.EntityNotFoundException;
 	    
 	    /***
 	     * ############
-	     * #   Reservar Libro
+	     * #   Reservar Producto
 	     * ###########
 	     */
 	/*
