@@ -30,11 +30,10 @@ public class UserServiceImpl implements UsuarioService {
             }
         };
     }
-	@Override
-	public List<Perfil> getAllUsers() {
-		List<Perfil> allUsers =  userRepository.findAll().stream()
-			    .map(usuario -> new Perfil(usuario.getFirstName(), usuario.getLastName(), usuario.getEmail(), usuario.getUsername(), usuario.getRoles().toString()))
-			    .collect(Collectors.toList());
-		 return allUsers;
-	}
+    @Override
+    public List<Perfil> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(usuario -> new Perfil(usuario.getFirstName(), usuario.getLastName(), usuario.getEmail(), usuario.getUsername(), usuario.getRoles().toString()))
+                .collect(Collectors.toList());
+    }
 }

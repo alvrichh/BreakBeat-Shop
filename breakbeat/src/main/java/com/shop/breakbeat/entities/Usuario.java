@@ -2,7 +2,9 @@ package com.shop.breakbeat.entities;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -53,7 +55,7 @@ public class Usuario implements UserDetails {
     @ElementCollection(targetClass = Role.class)
     @Enumerated(EnumType.STRING)
     @Column(name = "RolesUsuario")
-    private List<Role> roles = new ArrayList<>(); // Inicializa la lista para evitar null
+    private Set<Role> roles = new HashSet<>();
 
     
     public void setBasicInfo(String firstName, String lastName, String username, String email) {
@@ -125,14 +127,6 @@ public class Usuario implements UserDetails {
         this.password = password;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
     public Long getId() {
         return id;
     }
@@ -148,10 +142,15 @@ public class Usuario implements UserDetails {
     public String getEmail() {
         return email;
     }
+    public Set<Role> getRoles() {
+    	return roles;
+    }
     // Método para agregar un rol a la lista
     public void addRole(Role role) {
         this.roles.add(role);
     }
+
+    // Método para remover un rol de la lista
     public void removeRole(Role role) {
         this.roles.remove(role);
     }

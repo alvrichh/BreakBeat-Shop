@@ -36,8 +36,8 @@ public class InitializationData implements CommandLineRunner {
             usuario1.setUsername("@alicia23");
             usuario1.setEmail("alice.johnson@example.com");
             usuario1.setPassword(("password123"));
-            usuario1.setRoles(Collections.singletonList(Role.ROLE_USER));  // Usamos Collections.singletonList para crear una lista con un solo elemento
             usuarioRepository.save(usuario1);
+            
             System.out.println("Usuario ROLE_USER creado exitosamente");
         } catch (Exception e) {
             System.out.println("Error al crear usuario ROLE_USER");
@@ -60,7 +60,7 @@ public class InitializationData implements CommandLineRunner {
             adminUser.setUsername("@admin");
             adminUser.setEmail("admin@example.com");
             adminUser.setPassword(("admin123"));
-            adminUser.setRoles(Collections.singletonList(Role.ROLE_ADMIN));
+  
             usuarioRepository.save(adminUser);
             System.out.println("Usuario ROLE_ADMIN creado exitosamente");
         } catch (Exception e) {
