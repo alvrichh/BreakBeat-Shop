@@ -45,11 +45,9 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/v1/productos/**").permitAll()
                // .requestMatchers(HttpMethod.POST, "/api/v1/productos/*/reservar/**").hasAuthority(Rol.ROLE_USER.toString()) // Permite a ROLE_USER realizar reservas
                 .requestMatchers(HttpMethod.GET, "/api/v1/resources/**").permitAll()
-
-                .requestMatchers(HttpMethod.POST, "/api/v1/productos/**").hasAuthority(Role.ROLE_ADMIN.toString())
- 	            .requestMatchers(HttpMethod.PUT, "/api/v1/productos/**").hasAuthority(Role.ROLE_ADMIN.toString())
- 	          
- 	            .requestMatchers(HttpMethod.DELETE, "/api/v1/productos/**").hasAuthority(Role.ROLE_ADMIN.toString())
+                .requestMatchers(HttpMethod.POST, "/api/v1/productos/**").permitAll()
+ 	            .requestMatchers(HttpMethod.PUT, "/api/v1/productos/**").permitAll()
+ 	            .requestMatchers(HttpMethod.DELETE, "/api/v1/productos/**").permitAll()
  	           	.requestMatchers("/api/v1/users/**").hasAuthority("ROLE_ADMIN")  // Modificado aquí
                 .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))

@@ -17,40 +17,55 @@ import com.shop.breakbeat.repository.UsuarioRepository;
 @Component
 public class InitializationData implements CommandLineRunner {
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-    
-    private final boolean borrarProductos = false; // Variable para controlar el borrado de datos
-    
-    @Autowired
-    private ProductoRepository productoRepository;
-    
-    @Override
-    public void run(String... args) throws Exception {
-    	
-    	if (borrarProductos) {
-    		productoRepository.deleteAll(); // Borra todos las camisetas existentes
-        }
-    	
-    	try {
-    		// Usuario 1 - Rol USER
-            Usuario usuario1 = new Usuario();
-            usuario1.setFirstName("Alice");
-            usuario1.setLastName("Johnson");
-            usuario1.setUsername("@alicia23");
-            usuario1.setEmail("alice.johnson@example.com");
-            usuario1.setPassword(("password123"));
-            usuarioRepository.save(usuario1);
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
-}catch(Exception e) {
-    		
-    	}
-    	Faker faker = new Faker(new Locale("es"));
-        for (int i = 0; i < 10; i++) { // Generar 10  ficticios
-            Producto camiseta = new Producto();
-            camiseta.setNombre(faker.dragonBall().character());
-            productoRepository.save(camiseta);
-        }
-        
-    }
+	private final boolean borrarProductos = false; // Variable para controlar el borrado de datos
+
+	@Autowired
+	private ProductoRepository productoRepository;
+
+	@Override
+	public void run(String... args) throws Exception {
+
+		if (borrarProductos) {
+			productoRepository.deleteAll(); // Borra todos las camisetas existentes
+		}
+
+		try {
+			// Usuario 1 - Rol USER
+			Usuario usuario1 = new Usuario();
+			usuario1.setFirstName("Alice");
+			usuario1.setLastName("Johnson");
+			usuario1.setUsername("@alicia23");
+			usuario1.setEmail("alice.johnson@example.com");
+			usuario1.setPassword(("password123"));
+			usuario1.getRoles().add(Role.ROLE_USER);
+			usuarioRepository.save(usuario1);
+			System.out.println("Usuario creado");
+		} catch (Exception e) {
+
+		}
+		try {
+			// Usuario 1 - Rol USER
+			Usuario admin = new Usuario();
+			admin.setFirstName("admin");
+			admin.setLastName("admin");
+			admin.setUsername("@admin");
+			admin.setEmail("admin@admin.com");
+			admin.setPassword(("password123"));
+			admin.getRoles().add(Role.ROLE_ADMIN);
+			usuarioRepository.save(admin);
+			System.out.println("Usuario ADMIN creado");
+		} catch (Exception e) {
+			System.out.println("ERROR al crear Usuario ADMIN");
+		}
+		Faker faker = new Faker(new Locale("es"));
+		for (int i = 0; i < 10; i++) { // Generar 10 ficticios
+			Producto camiseta = new Producto();
+			camiseta.setNombre(faker.dragonBall().character());
+			productoRepository.save(camiseta);
+		}
+
+	}
 }

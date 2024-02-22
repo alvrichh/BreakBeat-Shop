@@ -29,6 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shop.breakbeat.entities.Producto;
 import com.shop.breakbeat.service.ProductoService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.persistence.EntityNotFoundException;
 
 /** 
@@ -80,7 +82,7 @@ import jakarta.persistence.EntityNotFoundException;
 	        return new ResponseEntity<>(productos, HttpStatus.OK);
 	    }
 	    
-	 // Leer un libro por ID
+	 // Leer un producto por ID
 	    @GetMapping("/{id}")
 	    @PreAuthorize("hasRole('ROLE_USER') || hasRole('ROLE_ADMIN')")
 	    public Producto getProductById(@PathVariable Long id) {
@@ -88,11 +90,22 @@ import jakarta.persistence.EntityNotFoundException;
 	    }
 
 	    // CRUD endpoints, accesibles solo por ROLE_ADMIN
-	    // Crear un nuevo libro
+	    // Crear un nuevo producto
 	    @PostMapping
-	    @PreAuthorize("hasRole('ROLE_ADMIN')")
-	    public Producto createProduct(@RequestBody Producto product) {
-	        return productoService.agregarProducto(product);
+	    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+	    @Operation(summary = "Crear un nuevo jabón", description = "Crea un nuevo jabón y lo guarda en la base de datos")
+	    @ApiResponse(responseCode = "201", description = "Jabón creado con éxito")
+	    @ApiResponse(responseCode = "400", description = "Datos proporcionados para el nuevo jabón son inválidos")
+	    public ResponseEntity<Producto> createProduct(@RequestBody Producto nuevoProducto) {
+	    	logger.info("## crearProducto ##");
+	        // Realiza la validación y lógica de negocio necesaria antes de guardar el nuevo jabón
+	        // Por ejemplo, puedes verificar si ya existe un jabón con el mismo nombre
+
+	        // Guarda el nuevo jabón en la base de datos
+	        Producto productoCreado = productoService.agregarProducto(nuevoProducto);
+
+	        // Devuelve una respuesta con el jabón creado y el código de estado 201 (CREATED)
+	        return ResponseEntity.status(HttpStatus.CREATED).body(productoCreado);
 	    }
 
 	    // Actualizar un libro
@@ -108,12 +121,6 @@ import jakarta.persistence.EntityNotFoundException;
 	    public void deleteProduct(@PathVariable Long id) {
 	    	productoService.eliminarProducto(id);
 	    }
-	    
-	    /***
-	     * ############
-	     * #   Reservar Producto
-	     * ###########
-	     */
 	/*
 	    @PostMapping("/{productoId}/reservar")
 	    @PreAuthorize("hasRole('ROLE_USER')")

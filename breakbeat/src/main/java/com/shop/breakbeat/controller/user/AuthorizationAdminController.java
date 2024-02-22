@@ -27,7 +27,7 @@ public class AuthorizationAdminController {
 
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') || hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<Perfil>> showUsers() {
     	logger.info("## AuthorizationAdminController :: showUsers" );
         List<Perfil> userList = userService.getAllUsers();
