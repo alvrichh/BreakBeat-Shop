@@ -1,14 +1,15 @@
 package com.shop.breakbeat.entities;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -21,21 +22,38 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
-public class Usuario implements UserDetails{
-	  private static final long serialVersionUID = 1L;
+public class Usuario implements UserDetails {
+    private static final long serialVersionUID = 1L;
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "El nombre no puede estar en blanco")
     private String firstName;
+
+    @NotBlank(message = "El apellido no puede estar en blanco")
     private String lastName;
+
+    @NotBlank(message = "El nombre de usuario no puede estar en blanco")
+    @Size(min = 3, max = 20, message = "El nombre de usuario debe tener entre 3 y 20 caracteres")
     @Column(unique = true)
     private String username;
+
+    @NotBlank(message = "El correo electrónico no puede estar en blanco")
+    @Email(message = "El formato del correo electrónico no es válido")
     @Column(unique = true)
     private String email;
+
+    @NotBlank(message = "La contraseña no puede estar en blanco")
+    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
     private String password;
+    
 
     @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
     @Enumerated(EnumType.STRING)
@@ -127,3 +145,9 @@ public class Usuario implements UserDetails{
 
     
 }
+
+
+
+
+
+
