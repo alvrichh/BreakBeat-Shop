@@ -11,11 +11,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -52,19 +54,14 @@ public class Usuario implements UserDetails {
     @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
     private String password;
     
-    @ElementCollection(targetClass = Role.class)
+
+    @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
     @Enumerated(EnumType.STRING)
-    @Column(name = "RolesUsuario")
+    @CollectionTable(name="usuario_rol")
+    @Column(name ="RolesUsuario")
     private Set<Role> roles = new HashSet<>();
 
-    
-    public void setBasicInfo(String firstName, String lastName, String username, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.email = email;
-    }
-    
+
     @Transactional
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -75,7 +72,6 @@ public class Usuario implements UserDetails {
                 .map(role -> new SimpleGrantedAuthority(role.name()))
                 .collect(Collectors.toList());
     }
-
     @Override
     public String getUsername() {
         return username;
@@ -114,11 +110,11 @@ public class Usuario implements UserDetails {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    
+	public String setUsername(String username) {
+		return username;
+	}
+    
     public void setEmail(String email) {
         this.email = email;
     }
@@ -127,31 +123,31 @@ public class Usuario implements UserDetails {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
     public Set<Role> getRoles() {
-    	return roles;
-    }
-    // Método para agregar un rol a la lista
-    public void addRole(Role role) {
-        this.roles.add(role);
+        return roles;
     }
 
-    // Método para remover un rol de la lista
-    public void removeRole(Role role) {
-        this.roles.remove(role);
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
+	public Long getId() {
+		return id;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public String getEmail() {
+		return email;
+	}
+
+    
 }
+
+
+
+
+
+
