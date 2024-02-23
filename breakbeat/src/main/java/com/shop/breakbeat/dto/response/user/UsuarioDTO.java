@@ -1,6 +1,6 @@
 package com.shop.breakbeat.dto.response.user;
 
-public class Perfil {
+public class UsuarioDTO {
 		
 		private String username;
 		private String nombre;
@@ -10,7 +10,7 @@ public class Perfil {
 	    
 	    
 		
-		public Perfil(String username, String nombre, String apellidos, String email, String rol) {
+		public UsuarioDTO(String username, String nombre, String apellidos, String email, String rol) {
 			super();
 			this.username = username;
 			this.nombre = nombre;

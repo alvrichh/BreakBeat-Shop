@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shop.breakbeat.dto.response.PexelsResponse;
-import com.shop.breakbeat.dto.response.user.Perfil;
+import com.shop.breakbeat.dto.response.user.UsuarioDTO;
 import com.shop.breakbeat.entities.Usuario;
 import com.shop.breakbeat.service.impl.PexelsWebClient;
 
@@ -38,10 +38,10 @@ public class AuthorizationController {
     }
     
     @GetMapping("/perfil")
-    public ResponseEntity<Perfil> miPerfil(@AuthenticationPrincipal Usuario usuario) {
+    public ResponseEntity<UsuarioDTO> miPerfil(@AuthenticationPrincipal Usuario usuario) {
     	logger.info("## AuthorizationController :: miPerfil" );
     	
-    	Perfil userResponse = new Perfil(usuario.getFirstName(), usuario.getLastName(),usuario.getUsername(), usuario.getEmail(), usuario.getRoles().toString());
+    	UsuarioDTO userResponse = new UsuarioDTO(usuario.getFirstName(), usuario.getLastName(),usuario.getUsername(), usuario.getEmail(), usuario.getRoles().toString());
     	
     	return  ResponseEntity.ok(userResponse);
     }

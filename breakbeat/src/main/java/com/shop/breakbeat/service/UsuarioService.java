@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import com.shop.breakbeat.dto.response.user.Perfil;
+import com.shop.breakbeat.dto.response.user.UsuarioDTO;
 
 public interface UsuarioService {
     UserDetailsService userDetailsService();
-    List<Perfil> getAllUsers();
+    List<UsuarioDTO> getAllUsers();
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shop.breakbeat.dto.response.user.Perfil;
+import com.shop.breakbeat.dto.response.user.UsuarioDTO;
 import com.shop.breakbeat.service.UsuarioService;
 
 
@@ -27,10 +27,10 @@ public class AuthorizationAdminController {
 
 
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_USER') || hasRole('ROLE_ADMIN')")
-    public ResponseEntity<List<Perfil>> showUsers() {
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ResponseEntity<List<UsuarioDTO>> showUsers() {
     	logger.info("## AuthorizationAdminController :: showUsers" );
-        List<Perfil> userList = userService.getAllUsers();
+        List<UsuarioDTO> userList = userService.getAllUsers();
         return ResponseEntity.ok(userList);
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.shop.breakbeat.dto.response.user.Perfil;
+import com.shop.breakbeat.dto.response.user.UsuarioDTO;
 import com.shop.breakbeat.repository.UsuarioRepository;
 import com.shop.breakbeat.service.UsuarioService;
 
@@ -25,15 +25,15 @@ public class UserServiceImpl implements UsuarioService {
         return new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) {
-                return (UserDetails) userRepository.findByEmail(username)
+                return (UserDetails) userRepository.findByUsername(username)
                         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
             }
         };
     }
     @Override
-    public List<Perfil> getAllUsers() {
+    public List<UsuarioDTO> getAllUsers() {
         return userRepository.findAll().stream()
-                .map(usuario -> new Perfil(usuario.getFirstName(), usuario.getLastName(), usuario.getEmail(), usuario.getUsername(), usuario.getRoles().toString()))
+                .map(usuario -> new UsuarioDTO(usuario.getFirstName(), usuario.getLastName(), usuario.getEmail(), usuario.getUsername(), usuario.getRoles().toString()))
                 .collect(Collectors.toList());
     }
 }
