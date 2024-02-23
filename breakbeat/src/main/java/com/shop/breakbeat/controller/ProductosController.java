@@ -73,20 +73,22 @@ import jakarta.persistence.EntityNotFoundException;
 	            @RequestParam(required = false, defaultValue = "0") int page,
 	            @RequestParam(required = false, defaultValue = "10") int size) {
 	        
-	        logger.info("LibrosController :: listarTodosLosLibros");
+	        logger.info("ProductosController :: listarTodosLosProductos");
 	        Pageable pageable = PageRequest.of(page, size);
 	        Page<Producto> productos = productoService.listarTodosLosProductos(pageable);
-	        
-	   
-	        
 	        return new ResponseEntity<>(productos, HttpStatus.OK);
 	    }
 	    
-	 // Leer un producto por ID
 	    @GetMapping("/{id}")
 	    @PreAuthorize("hasRole('ROLE_USER') || hasRole('ROLE_ADMIN')")
-	    public Producto getProductById(@PathVariable Long id) {
-	        return productoService.obtenerProductoPorId(id);
+	    public ResponseEntity<?> getProductById(@PathVariable Long id) {
+	        Producto producto = productoService.obtenerProductoPorId(id);
+
+	        if (producto != null) {
+	            return ResponseEntity.ok(producto);
+	        } else {
+	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Producto no encontrado.");
+	        }
 	    }
 
 	    // CRUD endpoints, accesibles solo por ROLE_ADMIN
@@ -113,14 +115,30 @@ import jakarta.persistence.EntityNotFoundException;
 	    @PreAuthorize("hasRole('ROLE_ADMIN')")
 	    public Producto updateProduct(@PathVariable Long id, @RequestBody Producto productDetails) {
 	        return productoService.actualizarProducto(id, productDetails);
+	        
+	        
 	    }
 
 	    // Eliminar un libro
 	    @DeleteMapping("/{id}")
+	    @Operation(summary = "Eliminar un producto", description = "Elimina un producto y lo guarda en la base de datos")
 	    @PreAuthorize("hasRole('ROLE_ADMIN')")
-	    public void deleteProduct(@PathVariable Long id) {
-	    	productoService.eliminarProducto(id);
+	    @ApiResponse(responseCode = "200", description = "Producto eliminado con éxito")
+	    @ApiResponse(responseCode = "404", description = "Producto no encontrado")
+	    public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+	        try {
+	            boolean productoEliminado = productoService.eliminarProducto(id);
+
+	            if (productoEliminado) {
+	                return ResponseEntity.ok("Producto eliminado.");
+	            } else {
+	                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Producto no encontrado");
+	            }
+	        } catch (Exception ex) {
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor");
+	        }
 	    }
+
 	/*
 	    @PostMapping("/{productoId}/reservar")
 	    @PreAuthorize("hasRole('ROLE_USER')")

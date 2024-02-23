@@ -29,7 +29,7 @@ public class ProductoServiceImpl implements ProductoService {
 	    @Override
 	    public Producto obtenerProductoPorId(Long id) {
 	        return productoRepository.findById(id)
-	                .orElseThrow(() -> new ProductoNotFoundException("Libro no encontrado"));
+	                .orElseThrow(() -> new ProductoNotFoundException("Producto no encontrado."));
 	    }
 
 	    @Override
@@ -41,10 +41,15 @@ public class ProductoServiceImpl implements ProductoService {
 	    }
 
 	    @Override
-	    public void eliminarProducto(Long id) {
-	    	productoRepository.deleteById(id);
+	    public boolean eliminarProducto(Long id) {
+	        try {
+		    	productoRepository.deleteById(id);
+	            return true; // o false dependiendo del resultado de la operación
+	        } catch (Exception e) {
+	            // Manejar la excepción, si es necesario
+	            return false;
+	        }
 	    }
-
 		@Override
 		public Page<Producto> listarTodosLosProductos(Pageable pageable) {
 			 return productoRepository.findAll(pageable);

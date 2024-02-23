@@ -11,7 +11,7 @@ public interface ProductoService {
 	
 	Producto actualizarProducto(Long id, Producto camiseta);
 	
-	void eliminarProducto(Long id);
+	boolean eliminarProducto(Long id);
 	
 	//VIEW
 	Producto obtenerProductoPorId(Long id);
