@@ -1,6 +1,8 @@
 package com.shop.breakbeat.service.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -54,5 +56,15 @@ public class ProductoServiceImpl implements ProductoService {
 		public Page<Producto> listarTodosLosProductos(Pageable pageable) {
 			 return productoRepository.findAll(pageable);
 		}
+/*
+	    @Override
+	    public Page<Producto> filtrarPorPrecio(Double precioMin, Double precioMax, Pageable pageable) {
+	        return productoRepository.findByPrecioBetween(precioMin, precioMax, pageable);
+	    }*/
 
+		@Override
+		public Page<Producto> filtrarPorPrecio(Double precioMin, Double precioMax, Pageable pageable) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

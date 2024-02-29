@@ -17,5 +17,11 @@ public interface ProductoService {
 	Producto obtenerProductoPorId(Long id);
 	
 	Page<Producto> listarTodosLosProductos(Pageable pageable);
+	
+	//FILTROS
+    //Page<Producto> filtrarPorCategoria(Categoria categoria, Pageable pageable);
+
+    // Filtrar por precio
+    Page<Producto> filtrarPorPrecio(Double precioMin, Double precioMax, Pageable pageable);
 
 }

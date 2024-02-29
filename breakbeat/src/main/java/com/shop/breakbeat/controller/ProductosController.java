@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shop.breakbeat.entities.Camiseta;
 import com.shop.breakbeat.entities.Producto;
 import com.shop.breakbeat.service.ProductoService;
 
@@ -43,20 +44,6 @@ import jakarta.persistence.EntityNotFoundException;
 // (o yanito) a una variedad lingüística utilizada 
 //  comúnmente por los habitantes de Gibraltar
 
-/**
- * Nota 2:
- * 
- *  - Usa DTO (LibroRequest) si necesitas control de seguridad adicional,
- *  desacoplamiento, validaciones específicas de la API,
- *  o personalización para diferentes operaciones.
- *  
- *  vs
- *  
- *  - Usa la Entidad directamente si tu aplicación es sencilla, 
- *  deseas mantener el código al mínimo, 
- *  y la API refleja directamente tu modelo de dominio.
- *  
- */
 	@RestController
 	@RequestMapping("/api/v1/productos")
 	public class ProductosController {
@@ -100,17 +87,15 @@ import jakarta.persistence.EntityNotFoundException;
 	    @ApiResponse(responseCode = "400", description = "Datos proporcionados para el nuevo jabón son inválidos")
 	    public ResponseEntity<Producto> createProduct(@RequestBody Producto nuevoProducto) {
 	    	logger.info("## crearProducto ##");
-	        // Realiza la validación y lógica de negocio necesaria antes de guardar el nuevo jabón
-	        // Por ejemplo, puedes verificar si ya existe un jabón con el mismo nombre
 
-	        // Guarda el nuevo jabón en la base de datos
+	        // Guarda el nuevo Producto en la base de datos
 	        Producto productoCreado = productoService.agregarProducto(nuevoProducto);
 
 	        // Devuelve una respuesta con el jabón creado y el código de estado 201 (CREATED)
 	        return ResponseEntity.status(HttpStatus.CREATED).body(productoCreado);
 	    }
 
-	    // Actualizar un libro
+	    // Actualizar un producto
 	    @PutMapping("/{id}")
 	    @PreAuthorize("hasRole('ROLE_ADMIN')")
 	    public Producto updateProduct(@PathVariable Long id, @RequestBody Producto productDetails) {
@@ -119,7 +104,7 @@ import jakarta.persistence.EntityNotFoundException;
 	        
 	    }
 
-	    // Eliminar un libro
+	    // Eliminar un producto
 	    @DeleteMapping("/{id}")
 	    @Operation(summary = "Eliminar un producto", description = "Elimina un producto y lo guarda en la base de datos")
 	    @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -138,7 +123,18 @@ import jakarta.persistence.EntityNotFoundException;
 	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor");
 	        }
 	    }
+	//    @GetMapping("/camisetas")
+	 //   public ResponseEntity<Page<Producto>> filtrarPorColores(@RequestParam Camiseta categoria, Pageable pageable) {
+	      //  Page<Producto> productos = productoService.filtrarPorCategoria(categoria, pageable);
+	    //}
+	    // VVVV los precios serán segun el tipo de producto
 
+	    @GetMapping("/filtrarPorPrecio")
+	    public ResponseEntity<Page<Producto>> filtrarPorPrecio(@RequestParam Double precio, Pageable pageable) {
+	        Page<Producto> productos = productoService.filtrarPorPrecio(precio, precio, pageable);
+	        return ResponseEntity.ok(productos);
+	    }
+	    
 	/*
 	    @PostMapping("/{productoId}/reservar")
 	    @PreAuthorize("hasRole('ROLE_USER')")

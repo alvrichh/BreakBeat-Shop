@@ -43,7 +43,10 @@ public class SecurityConfig {
 
                 .requestMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/productos/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/v1/users/**").hasAuthority("ROLE_ADMIN") 
+                .requestMatchers(HttpMethod.GET, "/api/v1/users/**").hasAuthority("ROLE_ADMIN")
+                //filtros
+                .requestMatchers(HttpMethod.GET, "/api/v1/productos/filtrarPorCategoria/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.GET, "/api/v1/productos/filtrarPorPrecio/**").hasAnyRole("USER", "ADMIN")
 
                // .requestMatchers(HttpMethod.POST, "/api/v1/productos/*/reservar/**").hasAuthority(Rol.ROLE_USER.toString()) // Permite a ROLE_USER realizar reservas
               //  .requestMatchers(HttpMethod.GET, "/api/v1/resources/**").permitAll()

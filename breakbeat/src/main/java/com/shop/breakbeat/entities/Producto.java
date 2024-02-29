@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -28,7 +29,8 @@ public class Producto {
     @Size(min = 0,  message = "El precio no puede ser inferior a 0.")
     private Double precio;
     
-    private Categoria categoria;
+    @OneToMany(mappedBy = "producto")
+   //private Set<Camiseta> camisetas = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -62,12 +64,6 @@ public class Producto {
 		this.precio = precio;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}    
 	
 }
