@@ -25,6 +25,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+/**
+ * Representa a un usuario en el sistema.
+ */
 @Table(name = "usuarios")
 @Entity
 public class Usuario implements UserDetails {
@@ -53,15 +56,18 @@ public class Usuario implements UserDetails {
     @NotBlank(message = "La contraseña no puede estar en blanco")
     @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
     private String password;
-    
 
     @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name="usuario_rol")
-    @Column(name ="RolesUsuario")
+    @CollectionTable(name = "usuario_rol")
+    @Column(name = "RolesUsuario")
     private Set<Role> roles = new HashSet<>();
 
-
+    /**
+     * Devuelve una colección de roles asignados al usuario.
+     *
+     * @return Colección de roles.
+     */
     @Transactional
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -72,35 +78,106 @@ public class Usuario implements UserDetails {
                 .map(role -> new SimpleGrantedAuthority(role.name()))
                 .collect(Collectors.toList());
     }
+
+    /**
+     * Obtiene el nombre de usuario del usuario.
+     *
+     * @return Nombre de usuario.
+     */
     @Override
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Indica si la cuenta del usuario no ha expirado.
+     *
+     * @return Si la cuenta no ha expirado.
+     */
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    /**
+     * Indica si la cuenta del usuario no está bloqueada.
+     *
+     * @return Si la cuenta no está bloqueada.
+     */
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    /**
+     * Indica si las credenciales del usuario no han expirado.
+     *
+     * @return Si las credenciales no han expirado.
+     */
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    /**
+     * Indica si el usuario está habilitado.
+     *
+     * @return Si el usuario está habilitado.
+     */
     @Override
     public boolean isEnabled() {
         return true;
     }
 
+    /**
+     * Obtiene la contraseña del usuario.
+     *
+     * @return Contraseña del usuario.
+     */
     @Override
     public String getPassword() {
         return password;
     }
+
+    // Métodos setter añadidos
+    // ...
+
+    /**
+     * Obtiene el ID del usuario.
+     *
+     * @return ID del usuario.
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Obtiene el primer nombre del usuario.
+     *
+     * @return Primer nombre del usuario.
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * Obtiene el apellido del usuario.
+     *
+     * @return Apellido del usuario.
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * Obtiene el correo electrónico del usuario.
+     *
+     * @return Correo electrónico del usuario.
+     */
+    public String getEmail() {
+        return email;
+    }
+
 
     // Métodos setter añadidos
     public void setFirstName(String firstName) {
@@ -130,18 +207,6 @@ public class Usuario implements UserDetails {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-	public Long getId() {
-		return id;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public String getEmail() {
-		return email;
-	}
 
     
 }

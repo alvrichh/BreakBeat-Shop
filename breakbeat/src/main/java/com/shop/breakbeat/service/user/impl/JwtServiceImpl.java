@@ -9,6 +9,7 @@ import java.util.function.Function;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
 import com.shop.breakbeat.service.user.JwtService;
 
 import io.jsonwebtoken.Claims;
@@ -17,30 +18,52 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
+/**
+ * Implementación del servicio JwtService para manejar tokens JWT.
+ */
 @Service
 public class JwtServiceImpl implements JwtService {
-	// Llave para firmar el JWT, obtenida del archivo de propiedades de la
-	// aplicación.
-	@Value("${jwt.secret}")
-	private String jwtSigningKey;
 
-	@Override
-	public String extractUserName(String token) {
+    // Llave para firmar el JWT, obtenida del archivo de propiedades de la aplicación.
+    @Value("${jwt.secret}")
+    private String jwtSigningKey;
+
+    /**
+     * Extrae el nombre de usuario del token JWT.
+     *
+     * @param token Token JWT.
+     * @return Nombre de usuario extraído del token.
+     */
+    @Override
+    public String extractUserName(String token) {
         return extractClaim(token, Claims::getSubject);
-	}
+    }
 
-	@Override
-	public String generateToken(UserDetails userDetails) {
+    /**
+     * Genera un token JWT para el usuario proporcionado.
+     *
+     * @param userDetails Detalles del usuario.
+     * @return Token JWT generado.
+     */
+    @Override
+    public String generateToken(UserDetails userDetails) {
         return generateToken(new HashMap<>(), userDetails);
-	}
+    }
 
-	@Override
-	public boolean isTokenValid(String token, UserDetails userDetails) {
-		   final String userName = extractUserName(token);
-	        return (userName.equals(userDetails.getUsername())) && !isTokenExpired(token);
-	}
+    /**
+     * Verifica si el token JWT es válido para el usuario proporcionado.
+     *
+     * @param token       Token JWT.
+     * @param userDetails Detalles del usuario.
+     * @return `true` si el token es válido, `false` si no lo es.
+     */
+    @Override
+    public boolean isTokenValid(String token, UserDetails userDetails) {
+        final String userName = extractUserName(token);
+        return (userName.equals(userDetails.getUsername())) && !isTokenExpired(token);
+    }
 
-	 // Método genérico para extraer información del token JWT.
+    // Método genérico para extraer información del token JWT.
     // Los claims son declaraciones que contienen información sobre el usuario y metadatos adicionales.
     private <T> T extractClaim(String token, Function<Claims, T> claimsResolvers) {
         final Claims claims = extractAllClaims(token);
@@ -71,7 +94,6 @@ public class JwtServiceImpl implements JwtService {
 
     // Extrae todas las claims del token.
     // Aquí se extrae y se procesa el conjunto completo de claims del JWT.
-
     private Claims extractAllClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
@@ -85,5 +107,4 @@ public class JwtServiceImpl implements JwtService {
         byte[] keyBytes = Decoders.BASE64.decode(jwtSigningKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
-    
 }

@@ -1,60 +1,143 @@
 package com.shop.breakbeat.dto.response.user;
 
+import com.shop.breakbeat.entities.Usuario;
+
+/**
+ * DTO (Objeto de Transferencia de Datos) que representa la información de un usuario para la respuesta.
+ */
 public class UsuarioDTO {
 
-	private String nombre;
-	private String apellidos;
-	private String email;
-	private String username;
-	private String rol;
+    private static final long serialVersionUID = 1L;
 
-	public UsuarioDTO(String nombre, String apellidos, String email, String username, String rol) {
-		super();
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.email = email;
-		this.username = username;
-		this.rol = rol;
-	}
+    /**
+     * Nombre del usuario.
+     */
+    private String nombre;
 
-	public String getUsername() {
-		return username;
-	}
+    /**
+     * Apellidos del usuario.
+     */
+    private String apellidos;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    /**
+     * Correo electrónico del usuario.
+     */
+    private String email;
 
-	public String getNombre() {
-		return nombre;
-	}
+    /**
+     * Nombre de usuario del usuario.
+     */
+    private String username;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    /**
+     * Rol del usuario.
+     */
+    private String rol;
 
-	public String getApellidos() {
-		return apellidos;
-	}
+    /**
+     * Constructor para crear un nuevo UsuarioDTO con la información proporcionada.
+     *
+     * @param nombre     Nombre del usuario.
+     * @param apellidos  Apellidos del usuario.
+     * @param email      Correo electrónico del usuario.
+     * @param username   Nombre de usuario del usuario.
+     * @param rol        Rol del usuario.
+     */
+    public UsuarioDTO(String nombre, String apellidos, String email, String username, String rol) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.username = username;
+        this.rol = rol;
+    }
 
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
+    /**
+     * Obtiene el nombre de usuario.
+     *
+     * @return Nombre de usuario.
+     */
+    public String getUsername() {
+        return username;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    /**
+     * Establece el nombre de usuario.
+     *
+     * @param username Nombre de usuario.
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    /**
+     * Obtiene el nombre del usuario.
+     *
+     * @return Nombre del usuario.
+     */
+    public String getNombre() {
+        return nombre;
+    }
 
-	public String getRol() {
-		return rol;
-	}
+    /**
+     * Establece el nombre del usuario.
+     *
+     * @param nombre Nombre del usuario.
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setRol(String rol) {
-		this.rol = rol;
-	}
+    /**
+     * Obtiene los apellidos del usuario.
+     *
+     * @return Apellidos del usuario.
+     */
+    public String getApellidos() {
+        return apellidos;
+    }
 
+    /**
+     * Establece los apellidos del usuario.
+     *
+     * @param apellidos Apellidos del usuario.
+     */
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    /**
+     * Obtiene el correo electrónico del usuario.
+     *
+     * @return Correo electrónico del usuario.
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Establece el correo electrónico del usuario.
+     *
+     * @param email Correo electrónico del usuario.
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Obtiene el rol del usuario.
+     *
+     * @return Rol del usuario.
+     */
+    public String getRol() {
+        return rol;
+    }
+
+    /**
+     * Establece el rol del usuario.
+     *
+     * @param rol Rol del usuario.
+     */
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 }
