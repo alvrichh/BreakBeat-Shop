@@ -49,20 +49,20 @@ public class InitializationData implements CommandLineRunner {
         try {
             // Usuario 1 - Rol USER
             Usuario usuario1 = new Usuario();
-            usuario1.setFirstName("Alice");
-            usuario1.setLastName("Johnson");
-            usuario1.setUsername("@alicia23");
-            usuario1.setEmail("alice.johnson@example.com");
+            usuario1.setFirstName("usuario");
+            usuario1.setLastName("anonimo");
+            usuario1.setUsername("@usuario");
+            usuario1.setEmail("usuario@example.com");
             usuario1.setPassword(passwordEncoder.encode("password123"));
             usuario1.getRoles().add(Role.ROLE_USER);
             usuarioRepository.save(usuario1);
-            System.out.println("Usuario creado");
+            System.out.println("Usuario1 (user) creado");
         } catch (Exception e) {
-            System.out.println("ERROR al crear Usuario");
+            System.out.println("ERROR al crear Usuario USER");
         }
 
         try {
-            // Usuario ADMIN - Rol ADMIN
+            // Usuario admin - Rol ADMIN
             Usuario admin = new Usuario();
             admin.setFirstName("admin");
             admin.setLastName("admin");
@@ -75,6 +75,21 @@ public class InitializationData implements CommandLineRunner {
         } catch (Exception e) {
             System.out.println("ERROR al crear Usuario ADMIN");
         }
+        try {
+            // Usuario 2 - Rol MANAGER
+            Usuario usuario2 = new Usuario();
+            usuario2.setFirstName("manager");
+            usuario2.setLastName("boss");
+            usuario2.setUsername("@manager");
+            usuario2.setEmail("manager@example.com");
+            usuario2.setPassword(passwordEncoder.encode("password123"));
+            usuario2.getRoles().add(Role.ROLE_MANAGER);
+            usuarioRepository.save(usuario2);
+            System.out.println("Usuario2 (manager) creado");
+        } catch (Exception e) {
+            System.out.println("ERROR al crear Usuario MANAGER");
+        }
+
 
         Faker faker = new Faker(new Locale("es"));
         for (int i = 0; i < 10; i++) { // Generar 10 productos ficticios

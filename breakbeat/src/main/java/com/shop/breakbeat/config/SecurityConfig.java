@@ -52,10 +52,18 @@ public class SecurityConfig {
             .authorizeHttpRequests(request ->
                 request
                     .requestMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll()
+                    // API CRUD USERS
+                    .requestMatchers(HttpMethod.GET, "/api/v1/users/**").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/users/**").hasAuthority("ROLE_ADMIN")
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/users/**").hasAuthority("ROLE_ADMIN")
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/users/**").hasAuthority("ROLE_ADMIN")
+                    
+                    // API CRUD PRODUCTOS
                     .requestMatchers(HttpMethod.GET, "/api/v1/productos/**").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/api/v1/users/**").hasAuthority("ROLE_ADMIN")
-                    .requestMatchers(HttpMethod.PUT, "/api/v1/productos/**").permitAll()
-                    .requestMatchers(HttpMethod.DELETE, "/api/v1/productos/**").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/productos/**").hasAnyAuthority("ROLE_MANAGER", "ROLE_ADMIN")
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/productos/**").hasAnyAuthority("ROLE_MANAGER", "ROLE_ADMIN")
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/productos/**").hasAnyAuthority("ROLE_MANAGER", "ROLE_ADMIN")
+                    
                     .anyRequest().authenticated())
             .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
             .cors(Customizer.withDefaults())
