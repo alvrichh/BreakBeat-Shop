@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shop.breakbeat.entities.Producto;
 import com.shop.breakbeat.service.ProductoService;
 
+import jakarta.validation.Valid;
+
 /**
  * Controlador para gestionar las operaciones relacionadas con productos.
  */
@@ -93,7 +95,7 @@ public class ProductosController {
      */
     @PostMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<Producto> createProduct(@RequestBody Producto nuevoProducto) {
+    public ResponseEntity<Producto> createProduct(@Valid @RequestBody Producto nuevoProducto) {
         logger.info("ProductosController :: createProduct");
         Producto productoCreado = productoService.agregarProducto(nuevoProducto);
         return ResponseEntity.status(HttpStatus.CREATED).body(productoCreado);

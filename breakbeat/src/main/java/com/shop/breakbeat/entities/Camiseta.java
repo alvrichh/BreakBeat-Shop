@@ -1,9 +1,13 @@
 package com.shop.breakbeat.entities;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
+@Entity
+@Table(name = "camisetas")
 public class Camiseta extends Producto {
 
 	
@@ -15,10 +19,11 @@ public class Camiseta extends Producto {
    // @Enumerated(EnumType.STRING)
 	private Size size;
 
+    /*
     @ManyToOne
     @JoinColumn(name = "producto_id", nullable = false)
     private Producto producto;
-
+*/
 	
 	public Color getColor() {
 		return color;
