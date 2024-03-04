@@ -1,5 +1,8 @@
 # BreakBeat-Shop
 
+Docunentación de la API en POSTMAN:
+https://documenter.getpostman.com/view/32189113/2sA2xcZZwe
+
 El proyecto en principio es una plataforma online de diseños para camisetas, el usuario anónimo puede ver, filtrar y buscar camisetas.
 El usuario registrado puede subir sus propios diseños y especificar en que tipo de artículo quiere venderlo (camiseta, sudadera, pantalones, tazas, pegatinas, ect)
 El administrador puede crear usuarios de prueba y productos de ejemplo.
