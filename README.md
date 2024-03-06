@@ -13,6 +13,7 @@ La idea principal es enfocar la web como un sitio en el que todos los usuarios p
 Será parecida a una red social.
 
 ![image](https://github.com/alvrichh/BreakBeat-Shop/assets/81918923/86132151-eb01-433c-8ec8-4fa6c9083018)
+![image](https://github.com/alvrichh/BreakBeat-Shop/assets/81918923/a33bdc14-d335-4252-8b15-57a03ac43241)
 
 ### Usuario:
 ID
@@ -24,7 +25,7 @@ Correo electrónico
 Número de teléfono
 -> Perfil
 
-### Perfil 
+### UsuarioDTO
 Productos publicados (diseños)
 Nombre de usuario
 Descripcion
