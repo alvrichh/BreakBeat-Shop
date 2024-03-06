@@ -29,7 +29,23 @@ public class Producto {
     @Size(min = 0, message = "El precio no puede ser inferior a 0.")
     private Double precio;
 
-    /**
+
+
+
+	public Producto(Long id, @NotBlank(message = "El nombre del producto no puede estar vacío.") String nombre,
+			@NotBlank(message = "La descripción del producto es obligatoria.") String descripcion,
+			@NotBlank(message = "El precio no puede estar vacío.") @Size(min = 0, message = "El precio no puede ser inferior a 0.") Double precio) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.precio = precio;
+	}
+
+	public Producto() {
+	}
+
+	/**
      * Obtiene el ID del producto.
      *
      * @return ID del producto.

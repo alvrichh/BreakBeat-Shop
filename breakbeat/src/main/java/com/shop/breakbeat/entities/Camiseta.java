@@ -10,8 +10,14 @@ import jakarta.validation.constraints.NotBlank;
 @Table(name = "camisetas")
 public class Camiseta extends Producto {
 
-	
-    @NotBlank(message = "El color de la camiseta no puede estar vacío.")
+
+	public Camiseta(Long id, @NotBlank(message = "El nombre del producto no puede estar vacío.") String nombre,
+			@NotBlank(message = "La descripción del producto es obligatoria.") String descripcion,
+			@NotBlank(message = "El precio no puede estar vacío.") @jakarta.validation.constraints.Size(min = 0, message = "El precio no puede ser inferior a 0.") Double precio) {
+		super(id, nombre, descripcion, precio);
+	}
+
+	@NotBlank(message = "El color de la camiseta no puede estar vacío.")
    // @Enumerated(EnumType.STRING)
     private Color color;
 
