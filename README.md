@@ -1,7 +1,6 @@
 # BreakBeat-Shop
-
-Docunentación de la API en POSTMAN:
-https://documenter.getpostman.com/view/32189113/2sA2xcZZwe
+### Docunentación de la API en POSTMAN:
+[![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white "Postman")](https://documenter.getpostman.com/view/32189113/2sA2xcZZwe)
 
 El proyecto en principio es una plataforma online de diseños para camisetas, el usuario anónimo puede ver, filtrar y buscar camisetas.
 El usuario registrado puede subir sus propios diseños y especificar en que tipo de artículo quiere venderlo (camiseta, sudadera, pantalones, tazas, pegatinas, ect)
@@ -11,39 +10,13 @@ El administrador puede crear usuarios de prueba y productos de ejemplo.
 La idea principal es enfocar la web como un sitio en el que todos los usuarios puedan crear sus propios diseños y que tengan su "galería de arte" estos usuarios pueden vender su arte como NFT o hacer merchandaising con productos. 
 
 Será parecida a una red social.
+![image](https://github.com/alvrichh/BreakBeat-Shop/assets/81918923/3401274d-ad76-4735-95f9-68fe7c17b44f)
+
 
 ![image](https://github.com/alvrichh/BreakBeat-Shop/assets/81918923/86132151-eb01-433c-8ec8-4fa6c9083018)
 ![image](https://github.com/alvrichh/BreakBeat-Shop/assets/81918923/a33bdc14-d335-4252-8b15-57a03ac43241)
 
-### Usuario:
-ID
-Nombre
-Apellidos
-DNI
-Fecha de nacimiento
-Correo electrónico
-Número de teléfono
--> Perfil
 
-### UsuarioDTO
-Productos publicados (diseños)
-Nombre de usuario
-Descripcion
-Tags
-Nivel (Exp)*
-Fecha de creación
--> Lista de productos
-
-*Este atributo variará según las publicaciones, comentarios y likes que de en la aplicación y conforme a su interacción. Está pensado para que los usuarios que más utilicen la aplicación obtengan su reconocimiento basado en  "Rangos" con diferentes "Insignias"
-  
-### Producto
-Tipo (Enum)
-Tamaño (Enum)
-Color (Enum)
-Precio
-Stock
-
-Tanto los usuarios anónimos como los registrados pueden comprar productos (también podrán reservarlos en localstorage como un carrito)
 ## Paquetes:
 
 * config
@@ -53,10 +26,3 @@ Tanto los usuarios anónimos como los registrados pueden comprar productos (tamb
 * error
 * repository
 * service
-
-# APIs
-
-## Spotify
-
-El usuario podrá iniciar sesión en su cuenta de spotify y acceder a su api
-https://developer.spotify.com
