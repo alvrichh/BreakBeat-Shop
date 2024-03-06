@@ -6,9 +6,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
-@Entity
-@Table(name = "camisetas")
-public class Camiseta extends Producto {
+public class Camiseta extends Categoria {
 
 	
     @NotBlank(message = "El color de la camiseta no puede estar vacío.")

@@ -6,8 +6,11 @@ import com.shop.breakbeat.service.UsuarioService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,15 +52,16 @@ public class AuthorizationAdminController {
 	 */
 	@GetMapping("/{userId}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<List<Usuario>> showUserById(@PathVariable Long userId) {
+	public ResponseEntity<?> showUserById(@PathVariable Long userId) {
 		logger.info("Obtener usuario por ID: {}", userId);
 		List<Usuario> users = userService.getUserById(userId);
 
 		if (!users.isEmpty()) {
-			return ResponseEntity.ok(users);
+			return ResponseEntity.status(HttpStatus.OK).body(users);
 		} else {
 			logger.warn("Usuario no encontrado para ID: {}", userId);
-			return ResponseEntity.notFound().build();
+			System.err.println("Error al obtener el usuario con el id: " + userId );
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error al obtener el usuario con id: " + userId);
 		}
 	}
 }

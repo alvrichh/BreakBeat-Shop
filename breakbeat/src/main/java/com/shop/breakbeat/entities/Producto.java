@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -28,6 +31,10 @@ public class Producto {
     @NotBlank(message = "El precio no puede estar vacío.")
     @Size(min = 0, message = "El precio no puede ser inferior a 0.")
     private Double precio;
+    
+    @JoinColumn(name= "categoria")
+    @ManyToOne
+    private Categoria camiseta;
 
     /**
      * Obtiene el ID del producto.
@@ -100,4 +107,12 @@ public class Producto {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
+
+	public Categoria getCamiseta() {
+		return camiseta;
+	}
+
+	public void setCamiseta(Categoria camiseta) {
+		this.camiseta = camiseta;
+	}
 }

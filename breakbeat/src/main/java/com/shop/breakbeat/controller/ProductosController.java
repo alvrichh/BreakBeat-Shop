@@ -59,12 +59,13 @@ public class ProductosController {
             // Filtrado por precio
             Pageable pageable = PageRequest.of(page, size);
             Page<Producto> resultadoFiltrado = productoService.findByPrecioBetween(precioMin, precioMax, pageable);
-            return new ResponseEntity<>(resultadoFiltrado, HttpStatus.OK);
+            return ResponseEntity.status(HttpStatus.OK).body(resultadoFiltrado);
         } else {
             // Listar todos los productos sin filtrado
+        	System.out.println("######################################");
             Pageable pageable = PageRequest.of(page, size);
             Page<Producto> productos = productoService.listarTodosLosProductos(pageable);
-            return new ResponseEntity<>(productos, HttpStatus.OK);
+            return ResponseEntity.status(HttpStatus.OK).body(productos);
         }
     }
 
@@ -76,7 +77,7 @@ public class ProductosController {
      * @return ResponseEntity con el producto si se encuentra, o un estado 404 si no se encuentra.
      */
     @GetMapping("/{id}")
-    @PreAuthorize("hasRole('ROLE_USER') || hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') || hasRole('ROLE_ADMIN') || hasRole('ROLE_MANAGER') ")
     public ResponseEntity<?> getProductById(@PathVariable Long id) {
         Producto producto = productoService.obtenerProductoPorId(id);
 
