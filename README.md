@@ -1,5 +1,5 @@
 # BreakBeat-Shop
-### Docunentación de la API en POSTMAN:
+### Documentación de la API en POSTMAN:
 [![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white "Postman")](https://documenter.getpostman.com/view/32189113/2sA2xcZZwe)
 
 El proyecto en principio es una plataforma online de diseños para camisetas, el usuario anónimo puede ver, filtrar y buscar camisetas.
