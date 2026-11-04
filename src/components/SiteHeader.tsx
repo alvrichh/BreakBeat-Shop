@@ -10,10 +10,10 @@ const NAV = [
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b-3 border-black bg-asphalt/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-        <Link href="/" className="group flex items-center gap-2" aria-label="BreakBeat, inicio">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3">
+        <Link href="/" className="group flex min-w-0 items-center gap-2" aria-label="BreakBeat, inicio">
           <Equalizer className="h-7" />
-          <span className="font-graffiti text-3xl leading-none text-pink transition-transform group-hover:-rotate-3 sm:text-4xl">
+          <span className="font-graffiti text-2xl leading-none text-pink transition-transform group-hover:-rotate-3 min-[380px]:text-3xl sm:text-4xl">
             BreakBeat
           </span>
         </Link>

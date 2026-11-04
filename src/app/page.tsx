@@ -1,74 +1,75 @@
 import Link from "next/link";
 import { Equalizer } from "@/components/Equalizer";
+import { HeroCarousel } from "@/components/HeroCarousel";
 import { Marquee } from "@/components/Marquee";
-import { ProductArt } from "@/components/ProductArt";
 import { ProductCard } from "@/components/ProductCard";
-import { getFeaturedProducts, getProduct } from "@/lib/products";
+import { getFeaturedProducts } from "@/lib/products";
 
 export default function Home() {
   const featured = getFeaturedProducts();
-  const hero = getProduct("amen-break")!;
 
   return (
     <>
       {/* HERO */}
       <section className="relative overflow-hidden">
         <SprayBlobs />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pt-10 pb-16 md:grid-cols-[1.2fr_1fr] md:pt-16">
-          <div>
-            <p className="inline-block -rotate-2 border-2 border-black bg-yolk px-3 py-1 font-display text-xs text-asphalt uppercase">
-              Drop 01 · ya ta en la kalle, illo
-            </p>
-            <h1 className="mt-5 font-graffiti text-[clamp(3.5rem,13vw,8.5rem)] leading-[0.85] text-pink">
-              <span className="block">Popopo</span>
-              <span className="block pl-[0.6em] text-acid">pisha!</span>
-            </h1>
-            <p className="mt-6 max-w-md text-lg text-chalk/85">
-              Ropa de kalle pa los ke viven el <strong className="text-cyan">breakbeat</strong>, el{" "}
-              <strong className="text-yolk">grafiteo</strong>, el{" "}
-              <strong className="text-flame">kataneo</strong> y el mañaneo hasta las tantas. Colores
-              ke se ven dende el polígono de enfrente, ¿me entiendeh?
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link
-                href="/tienda"
-                className="brutal brutal-hover bg-pink px-6 py-3 font-display text-lg text-asphalt uppercase"
-              >
-                Pillar ropa
-              </Link>
-              <Link
-                href="#manifiesto"
-                className="font-marker text-lg text-chalk underline decoration-acid decoration-4 underline-offset-4 hover:text-acid"
-              >
-                ¿Y vosotros quién soi?
-              </Link>
-            </div>
+        <HeroCarousel
+          before={
+            <>
+              <p className="inline-block -rotate-2 border-2 border-black bg-yolk px-3 py-1 font-display text-xs text-asphalt uppercase">
+                Drop 01 · ya ta en la kalle, illo
+              </p>
+              <h1 className="sr-only">
+                BreakBeat: ropa de kalle con grafiteo, kataneo y breakbeat
+              </h1>
+            </>
+          }
+        >
+          <p className="mt-6 max-w-md text-lg text-chalk/85">
+            Ropa de kalle pa los ke viven el <strong className="text-cyan">breakbeat</strong>, el{" "}
+            <strong className="text-yolk">grafiteo</strong>, el{" "}
+            <strong className="text-flame">kataneo</strong> y el mañaneo hasta las tantas. Colores
+            ke se ven dende el polígono de enfrente, ¿me entiendeh?
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <Link
+              href="/tienda"
+              className="brutal brutal-hover bg-pink px-6 py-3 font-display text-lg text-asphalt uppercase"
+            >
+              Pillar ropa
+            </Link>
+            <Link
+              href="#manifiesto"
+              className="font-marker text-lg text-chalk underline decoration-acid decoration-4 underline-offset-4 hover:text-acid"
+            >
+              ¿Y vosotros quién soi?
+            </Link>
           </div>
-
-          <Link
-            href={`/producto/${hero.slug}`}
-            className="group relative mx-auto w-full max-w-sm"
-            aria-label={`Ver ${hero.name}`}
-          >
-            <div className="brutal absolute inset-4 rotate-6 bg-cyan" aria-hidden="true" />
-            <div className="brutal relative -rotate-3 bg-acid transition-transform duration-300 group-hover:rotate-0">
-              <ProductArt product={hero} className="w-full p-4" />
-            </div>
-            <span className="absolute -right-2 -bottom-4 rotate-6 border-2 border-black bg-chalk px-3 py-1 font-marker text-asphalt">
-              {hero.name} →
-            </span>
-          </Link>
-        </div>
+        </HeroCarousel>
       </section>
 
       <Marquee
         className="-rotate-1 bg-acid text-asphalt"
-        words={["Popopo", "Mañaneo", "Kataneo", "Grafiteo", "136 BPM", "Illo", "To flama", "La kru"]}
+        words={[
+          "Popopo",
+          "Mañaneo",
+          "Kataneo",
+          "Grafiteo",
+          "136 BPM",
+          "Illo",
+          "To flama",
+          "La kru",
+        ]}
       />
       <Marquee
         reverse
         className="rotate-1 bg-pink text-asphalt"
-        words={["Hecho bajo pedido", "Envío a toa España", "Tinta ke no se cuartea", "Diseños der barrio"]}
+        words={[
+          "Hecho bajo pedido",
+          "Envío a toa España",
+          "Tinta ke no se cuartea",
+          "Diseños der barrio",
+        ]}
       />
 
       {/* DESTACADOS */}
