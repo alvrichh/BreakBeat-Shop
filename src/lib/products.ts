@@ -22,6 +22,9 @@ export type ProductKind =
 
 export type Line = "ellas" | "ellos" | "tos";
 
+/** Colección (sección principal de la tienda). */
+export type Collection = "summer" | "winter" | "retro";
+
 /** «discreto» = detalle pequeño; «mortal» = cani a tope, que se vea desde lejos. */
 export type Level = "discreto" | "mortal";
 
@@ -55,6 +58,7 @@ export type Product = {
   kind: ProductKind;
   line: Line;
   level: Level;
+  collection: Collection;
   /** Precio en céntimos de euro (nunca decimales para dinero). */
   price: number;
   tagline: string;
@@ -104,6 +108,58 @@ export const LEVEL_LABELS: Record<Level, string> = {
   mortal: "Mortal 💀",
 };
 
+export type CollectionInfo = {
+  slug: Collection;
+  name: string;
+  emoji: string;
+  tagline: string;
+  description: string;
+  /** Clases de color de la colección (texto y fondo). */
+  text: string;
+  bg: string;
+};
+
+export const COLLECTIONS: CollectionInfo[] = [
+  {
+    slug: "summer",
+    name: "Summer",
+    emoji: "☀️",
+    tagline: "Calor, feria y festis.",
+    description:
+      "Camisetas, gorras, lonas y banderas pa la playa, la feria y el festi. Pa sudarla en la pista hasta el mañaneo.",
+    text: "text-yolk",
+    bg: "bg-yolk",
+  },
+  {
+    slug: "winter",
+    name: "Winter",
+    emoji: "❄️",
+    tagline: "Sudaderas y chándal pa el frío.",
+    description:
+      "Sudaderas perchadas y chándal pa las noches largas en cocheras y los afters de enero. Calentito pero mortal.",
+    text: "text-cyan",
+    bg: "bg-cyan",
+  },
+  {
+    slug: "retro",
+    name: "Retro",
+    emoji: "📼",
+    tagline: "Lo de toa la vida.",
+    description:
+      "Tags, breaks y makineo de los 90. Diseños de cuando el grafiteo se hacía con rotulador gordo y el bakalao sonaba en el coche.",
+    text: "text-pink",
+    bg: "bg-pink",
+  },
+];
+
+export function getCollection(slug: string): CollectionInfo | undefined {
+  return COLLECTIONS.find((c) => c.slug === slug);
+}
+
+export function getByCollection(collection: Collection): Product[] {
+  return products.filter((p) => p.collection === collection);
+}
+
 export const products: Product[] = [
   // ───────────── PA ELLAS ─────────────
   {
@@ -112,6 +168,7 @@ export const products: Product[] = [
     kind: "hoodie",
     line: "ellas",
     level: "mortal",
+    collection: "winter",
     price: 6200,
     tagline: "Leopardo de arriba abajo y brillitos, reina.",
     description:
@@ -134,6 +191,7 @@ export const products: Product[] = [
     kind: "pants",
     line: "ellas",
     level: "mortal",
+    collection: "winter",
     price: 4500,
     tagline: "El pantalón ke manda en la pista.",
     description:
@@ -148,6 +206,7 @@ export const products: Product[] = [
     kind: "tee",
     line: "ellas",
     level: "mortal",
+    collection: "summer",
     price: 2900,
     tagline: "Corona puesta y leopardo en el pecho.",
     description:
@@ -163,6 +222,7 @@ export const products: Product[] = [
     kind: "tee",
     line: "ellas",
     level: "discreto",
+    collection: "summer",
     price: 2700,
     tagline: "Poquito pero con brillo.",
     description:
@@ -178,6 +238,7 @@ export const products: Product[] = [
     kind: "cap",
     line: "ellas",
     level: "discreto",
+    collection: "summer",
     price: 2400,
     tagline: "Princesa, pero del polígono.",
     description:
@@ -194,6 +255,7 @@ export const products: Product[] = [
     kind: "tee",
     line: "ellos",
     level: "mortal",
+    collection: "summer",
     price: 3200,
     tagline: "Tierno no es, illo.",
     description:
@@ -216,6 +278,7 @@ export const products: Product[] = [
     kind: "tee",
     line: "ellos",
     level: "discreto",
+    collection: "summer",
     price: 2700,
     tagline: "El oso, pero pa ir a ver a la abuela.",
     description:
@@ -230,6 +293,7 @@ export const products: Product[] = [
     kind: "hoodie",
     line: "ellos",
     level: "mortal",
+    collection: "winter",
     price: 6200,
     tagline: "Llamas hasta el pecho.",
     description:
@@ -251,6 +315,7 @@ export const products: Product[] = [
     kind: "pants",
     line: "ellos",
     level: "mortal",
+    collection: "winter",
     price: 4500,
     tagline: "Corres y dejas fuego.",
     description:
@@ -267,6 +332,7 @@ export const products: Product[] = [
     kind: "cap",
     line: "ellos",
     level: "mortal",
+    collection: "summer",
     price: 2600,
     tagline: "El oso en la frente y brillando.",
     description:
@@ -283,6 +349,7 @@ export const products: Product[] = [
     kind: "tee",
     line: "tos",
     level: "mortal",
+    collection: "retro",
     price: 2900,
     tagline: "El loop ke lo empezó tó, pisha.",
     description:
@@ -298,6 +365,7 @@ export const products: Product[] = [
     kind: "hoodie",
     line: "tos",
     level: "mortal",
+    collection: "winter",
     price: 5900,
     tagline: "Pa las noches largas en cocheras, ¿sabe lo ke te digo?",
     description:
@@ -312,6 +380,7 @@ export const products: Product[] = [
     kind: "tee",
     line: "tos",
     level: "discreto",
+    collection: "retro",
     price: 2700,
     tagline: "No hay plan B, quillo.",
     description:
@@ -326,6 +395,7 @@ export const products: Product[] = [
     kind: "cap",
     line: "tos",
     level: "discreto",
+    collection: "retro",
     price: 2400,
     tagline: "Tu firma en la frente, campeón.",
     description:
@@ -340,6 +410,7 @@ export const products: Product[] = [
     kind: "sticker",
     line: "tos",
     level: "mortal",
+    collection: "retro",
     price: 800,
     tagline: "Diez pegatinas pa dejar huella por tó el barrio.",
     description:
@@ -354,6 +425,7 @@ export const products: Product[] = [
     kind: "lanyard",
     line: "tos",
     level: "mortal",
+    collection: "retro",
     price: 900,
     tagline: "Las llaves del coche, con estilo.",
     description:
@@ -368,6 +440,7 @@ export const products: Product[] = [
     kind: "banner",
     line: "tos",
     level: "mortal",
+    collection: "summer",
     price: 3500,
     tagline: "Pa colgarla en el balcón o en la pista.",
     description:
@@ -383,6 +456,7 @@ export const products: Product[] = [
     kind: "flag",
     line: "tos",
     level: "mortal",
+    collection: "summer",
     price: 2500,
     tagline: "Pa ondearla en el festi, illo.",
     description:
@@ -397,10 +471,60 @@ export const products: Product[] = [
     colors: [BLACK, RED],
     sizes: ["90×60 cm"],
   },
+  {
+    slug: "oso-de-invierno",
+    name: "Oso de Invierno",
+    kind: "hoodie",
+    line: "ellos",
+    level: "mortal",
+    collection: "winter",
+    price: 6200,
+    tagline: "El oso no hiberna, illo.",
+    description:
+      "Sudadera con el oso asesino gigante, cadena de oro y brillos. Interior perchado pa ke el frío te dé igual mientras esperas en la puerta del after.",
+    art: { motif: "bear", text: "OSO", glitter: true, palette: ["#c8102e", "#ff6b00", GOLD] },
+    colors: [GREY, BLACK, NAVY],
+    sizes: CLOTHING_SIZES,
+  },
+  {
+    slug: "makina-95",
+    name: "Makina 95",
+    kind: "hoodie",
+    line: "tos",
+    level: "mortal",
+    collection: "retro",
+    price: 5900,
+    tagline: "Como en los 90, pero con la sudadera nueva.",
+    description:
+      "Sudadera con «MAKINA» en letras de rotulador gordo y colores flúor de los 90. Pa los ke se saben tos los temas de memoria.",
+    art: { motif: "tag", text: "MAKINA", palette: ["#b6ff00", "#8a2bff", "#ff2d95"] },
+    colors: [BLACK, WHITE],
+    sizes: CLOTHING_SIZES,
+    badge: "Old school",
+  },
 ];
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((product) => product.slug === slug);
+}
+
+/**
+ * Todo el catálogo mezclado, pa ke en la tienda se vean las colecciones
+ * revueltas (el color de fondo de cada tarjeta dice de cuál es).
+ * La mezcla es fija (semilla) pa ke el HTML del servidor y del navegador coincidan.
+ */
+export function getMixedProducts(seed = 136): Product[] {
+  let state = seed;
+  const random = () => {
+    state = (state * 1664525 + 1013904223) % 4294967296;
+    return state / 4294967296;
+  };
+  const mixed = [...products];
+  for (let i = mixed.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [mixed[i], mixed[j]] = [mixed[j], mixed[i]];
+  }
+  return mixed;
 }
 
 export function getFeaturedProducts(): Product[] {

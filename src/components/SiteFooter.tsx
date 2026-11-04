@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { COLLECTIONS } from "@/lib/products";
 
 export function SiteFooter() {
   return (
@@ -17,6 +18,11 @@ export function SiteFooter() {
           <Link href="/tienda" className="hover:text-acid">
             Tó el género
           </Link>
+          {COLLECTIONS.map((c) => (
+            <Link key={c.slug} href={`/coleccion/${c.slug}`} className="hover:text-acid">
+              {c.name} {c.emoji}
+            </Link>
+          ))}
           <Link href="/carrito" className="hover:text-acid">
             La bolsa
           </Link>

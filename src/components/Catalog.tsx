@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import {
+  COLLECTIONS,
   KIND_LABELS,
   LEVEL_LABELS,
   LINE_LABELS,
+  type Collection,
   type Level,
   type Line,
   type Product,
@@ -16,29 +18,46 @@ const ALL = "all";
 type Option<T extends string> = { value: T | typeof ALL; label: string };
 
 export function Catalog({ products }: { products: Product[] }) {
+  const [collection, setCollection] = useState<Collection | typeof ALL>(ALL);
   const [line, setLine] = useState<Line | typeof ALL>(ALL);
   const [kind, setKind] = useState<ProductKind | typeof ALL>(ALL);
   const [level, setLevel] = useState<Level | typeof ALL>(ALL);
 
   const visible = products.filter(
     (p) =>
+      (collection === ALL || p.collection === collection) &&
       (line === ALL || p.line === line) &&
       (kind === ALL || p.kind === kind) &&
       (level === ALL || p.level === level),
   );
 
   const kinds = Array.from(new Set(products.map((p) => p.kind)));
+  const collections = COLLECTIONS.filter((c) => products.some((p) => p.collection === c.slug));
+  const lines = (Object.keys(LINE_LABELS) as Line[]).filter((l) =>
+    products.some((p) => p.line === l),
+  );
 
   return (
     <>
       <div className="mt-8 space-y-4">
+        {collections.length > 1 && (
+          <ChipRow
+            label="Colección"
+            value={collection}
+            onChange={setCollection}
+            options={[
+              { value: ALL, label: "Tó" },
+              ...collections.map((c) => ({ value: c.slug, label: `${c.emoji} ${c.name}` })),
+            ]}
+          />
+        )}
         <ChipRow
           label="Pa quién"
           value={line}
           onChange={setLine}
           options={[
             { value: ALL, label: "Tó" },
-            ...(Object.keys(LINE_LABELS) as Line[]).map((l) => ({
+            ...lines.map((l) => ({
               value: l,
               label: LINE_LABELS[l],
             })),
@@ -77,6 +96,7 @@ export function Catalog({ products }: { products: Product[] }) {
           <button
             type="button"
             onClick={() => {
+              setCollection(ALL);
               setLine(ALL);
               setKind(ALL);
               setLevel(ALL);

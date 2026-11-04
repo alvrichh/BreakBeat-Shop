@@ -3,7 +3,13 @@ import { Equalizer } from "@/components/Equalizer";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Marquee } from "@/components/Marquee";
 import { ProductCard } from "@/components/ProductCard";
-import { products, type Line, type Product } from "@/lib/products";
+import {
+  COLLECTIONS,
+  getByCollection,
+  type Collection,
+  type CollectionInfo,
+  type Product,
+} from "@/lib/products";
 
 export default function Home() {
   return (
@@ -70,27 +76,41 @@ export default function Home() {
         ]}
       />
 
-      <Shelf
-        title="Pa ellas"
-        subtitle="Leopardo, rosa chicle y brillitos. Reina del polígono."
-        color="text-pink"
-        shadow="[--throwup-shadow:var(--color-yolk)]"
-        products={byLine("ellas")}
-      />
-      <Shelf
-        title="Pa ellos"
-        subtitle="Oso asesino, llamas y oro. Lo má mortal de la casa."
-        color="text-flame"
-        shadow="[--throwup-shadow:var(--color-violet)]"
-        products={byLine("ellos")}
-      />
-      <Shelf
-        title="Pa tos"
-        subtitle="Lonas pa el balcón, banderas pa el festi, lanyards y pegatinas."
-        color="text-acid"
-        shadow="[--throwup-shadow:var(--color-pink)]"
-        products={products.filter((p) => ["banner", "flag", "lanyard", "sticker"].includes(p.kind))}
-      />
+      {/* COLECCIONES */}
+      <section className="mx-auto max-w-6xl px-4 pt-20" aria-labelledby="colecciones">
+        <h2
+          id="colecciones"
+          className="throwup font-display text-4xl text-chalk uppercase [--throwup-shadow:var(--color-violet)] sm:text-5xl"
+        >
+          Elige temporada
+        </h2>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {COLLECTIONS.map((c, i) => (
+            <Link
+              key={c.slug}
+              href={`/coleccion/${c.slug}`}
+              className={`brutal brutal-hover group flex items-center justify-between gap-3 p-5 text-asphalt ${c.bg} ${
+                ["-rotate-1", "rotate-1", "-rotate-2"][i]
+              }`}
+            >
+              <div className="min-w-0">
+                <p className="font-graffiti text-4xl leading-none lg:text-5xl">{c.name}</p>
+                <p className="mt-2 font-marker text-sm">{c.tagline}</p>
+              </div>
+              <span
+                className="shrink-0 text-4xl transition-transform group-hover:scale-125 lg:text-5xl"
+                aria-hidden="true"
+              >
+                {c.emoji}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {COLLECTIONS.map((c) => (
+        <Shelf key={c.slug} collection={c} products={byCollection(c.slug)} />
+      ))}
 
       {/* MANIFIESTO */}
       <section id="manifiesto" className="mx-auto max-w-6xl scroll-mt-24 px-4 pt-24">
@@ -124,37 +144,26 @@ export default function Home() {
   );
 }
 
-/** Hasta 4 productos de una línea, los destacados primero. */
-function byLine(line: Line) {
-  return products
-    .filter((p) => p.line === line)
-    .sort((a, b) => Number(!!b.featured) - Number(!!a.featured));
+/** Productos de una colección, los destacados primero. */
+function byCollection(collection: Collection) {
+  return getByCollection(collection).sort((a, b) => Number(!!b.featured) - Number(!!a.featured));
 }
 
-function Shelf({
-  title,
-  subtitle,
-  color,
-  shadow,
-  products,
-}: {
-  title: string;
-  subtitle: string;
-  color: string;
-  shadow: string;
-  products: Product[];
-}) {
+function Shelf({ collection, products }: { collection: CollectionInfo; products: Product[] }) {
   return (
     <section className="mx-auto max-w-6xl px-4 pt-20">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 className={`throwup font-display text-4xl uppercase sm:text-5xl ${color} ${shadow}`}>
-            {title}
+          <h2 className={`font-graffiti text-5xl sm:text-6xl ${collection.text}`}>
+            {collection.name} <span aria-hidden="true">{collection.emoji}</span>
           </h2>
-          <p className="mt-2 font-marker text-chalk/80">{subtitle}</p>
+          <p className="mt-2 max-w-xl font-marker text-chalk/80">{collection.description}</p>
         </div>
-        <Link href="/tienda" className="font-marker text-lg hover:text-acid">
-          Ver tó, quillo →
+        <Link
+          href={`/coleccion/${collection.slug}`}
+          className="font-marker text-lg whitespace-nowrap hover:text-acid"
+        >
+          Ver tó {collection.name} →
         </Link>
       </div>
       <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-8 lg:grid-cols-4">

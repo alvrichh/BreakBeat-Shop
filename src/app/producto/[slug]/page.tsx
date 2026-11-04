@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BuyBox } from "@/components/BuyBox";
 import { ProductCard } from "@/components/ProductCard";
-import { getProduct, KIND_LABELS, products } from "@/lib/products";
+import { getCollection, getProduct, KIND_LABELS, products } from "@/lib/products";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -22,12 +22,16 @@ export default async function ProductPage({ params }: PageProps<"/producto/[slug
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
+  const collection = getCollection(product.collection)!;
 
   const related = products
     .filter((p) => p.slug !== product.slug)
     .map((p) => ({
       p,
-      score: Number(p.line === product.line) * 2 + Number(p.kind === product.kind),
+      score:
+        Number(p.collection === product.collection) * 3 +
+        Number(p.line === product.line) * 2 +
+        Number(p.kind === product.kind),
     }))
     .sort((a, b) => b.score - a.score)
     .map(({ p }) => p)
@@ -38,6 +42,10 @@ export default async function ProductPage({ params }: PageProps<"/producto/[slug
       <nav aria-label="Migas de pan" className="font-marker text-sm text-concrete">
         <Link href="/tienda" className="hover:text-acid">
           Tienda
+        </Link>{" "}
+        /{" "}
+        <Link href={`/coleccion/${collection.slug}`} className="hover:text-acid">
+          {collection.name} {collection.emoji}
         </Link>{" "}
         / <span>{KIND_LABELS[product.kind]}</span>
       </nav>

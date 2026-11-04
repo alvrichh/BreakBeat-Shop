@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { formatPrice, KIND_LABELS, LINE_LABELS, type Product } from "@/lib/products";
+import { formatPrice, getCollection, KIND_LABELS, LINE_LABELS, type Product } from "@/lib/products";
 import { ProductArt } from "./ProductArt";
 
 const TILTS = ["-rotate-1", "rotate-1", "rotate-0", "-rotate-2", "rotate-2"];
-const BACKDROPS = ["bg-pink", "bg-acid", "bg-cyan", "bg-yolk", "bg-flame", "bg-violet"];
 
 export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
-  const backdrop = BACKDROPS[index % BACKDROPS.length];
+  // El fondo dice la colección: Summer amarillo, Winter azul, Retro rosa.
+  const collection = getCollection(product.collection)!;
   const tilt = TILTS[index % TILTS.length];
 
   return (
@@ -28,11 +28,18 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
           Discreto
         </span>
       )}
-      <div className={`relative aspect-square overflow-hidden border-b-3 border-black ${backdrop}`}>
+      <div
+        className={`relative aspect-square overflow-hidden border-b-3 border-black ${collection.bg}`}
+      >
         <ProductArt
           product={product}
           className="size-full p-3 transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-2"
         />
+        <span
+          className={`absolute bottom-1.5 left-1.5 border-2 border-black bg-asphalt px-1.5 py-0.5 font-display text-[0.6rem] uppercase sm:text-xs ${collection.text}`}
+        >
+          {collection.name} <span aria-hidden="true">{collection.emoji}</span>
+        </span>
       </div>
       <div className="flex flex-1 flex-col items-start gap-2 p-2.5 sm:p-3">
         <div>

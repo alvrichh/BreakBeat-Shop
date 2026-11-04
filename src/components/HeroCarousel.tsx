@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
-import { getProduct, type Product } from "@/lib/products";
+import { getCollection, getProduct, type Product } from "@/lib/products";
 import { ProductArt } from "./ProductArt";
 
 /**
@@ -23,8 +23,8 @@ type Slide = {
   colors: [string, string];
   /** Producto que acompaña a la frase. */
   product: string;
-  /** Fondo de la tarjeta del producto y de la que asoma detrás. */
-  card: [string, string];
+  /** Fondo de la tarjeta que asoma detrás (la de delante lleva el color de la colección). */
+  back: string;
 };
 
 const SLIDES: Slide[] = [
@@ -33,56 +33,56 @@ const SLIDES: Slide[] = [
     bottom: "pisha!",
     colors: ["text-pink", "text-acid"],
     product: "amen-break",
-    card: ["bg-acid", "bg-cyan"],
+    back: "bg-cyan",
   },
   {
     top: "Camisetas",
     bottom: "bomba",
     colors: ["text-yolk", "text-pink"],
     product: "oso-asesino",
-    card: ["bg-yolk", "bg-flame"],
+    back: "bg-flame",
   },
   {
     top: "Mami",
     bottom: "leopardo",
     colors: ["text-pink", "text-yolk"],
     product: "mami-leopardo",
-    card: ["bg-pink", "bg-yolk"],
+    back: "bg-yolk",
   },
   {
     top: "Lo má warro",
     bottom: "ke hay",
     colors: ["text-acid", "text-flame"],
     product: "chandal-llamas",
-    card: ["bg-cyan", "bg-flame"],
+    back: "bg-flame",
   },
   {
     top: "Mañaneo",
     bottom: "del karajo",
     colors: ["text-flame", "text-cyan"],
     product: "lona-mananeo",
-    card: ["bg-violet", "bg-acid"],
+    back: "bg-acid",
   },
   {
     top: "To flama",
     bottom: "illo!",
     colors: ["text-yolk", "text-flame"],
     product: "fuego-en-el-barrio",
-    card: ["bg-yolk", "bg-pink"],
+    back: "bg-pink",
   },
   {
     top: "Reina",
     bottom: "del barrio",
     colors: ["text-pink", "text-cyan"],
     product: "reina-del-barrio",
-    card: ["bg-cyan", "bg-pink"],
+    back: "bg-pink",
   },
   {
     top: "Diseños",
     bottom: "mortales",
     colors: ["text-cyan", "text-pink"],
     product: "bandera-oso",
-    card: ["bg-acid", "bg-violet"],
+    back: "bg-violet",
   },
 ];
 
@@ -198,11 +198,11 @@ export function HeroCarousel({ before, children }: Props) {
         aria-label={`Ver ${product.name}`}
       >
         <div
-          className={`brutal absolute inset-4 rotate-6 transition-colors duration-500 ${slide.card[1]}`}
+          className={`brutal absolute inset-4 rotate-6 transition-colors duration-500 ${slide.back}`}
           aria-hidden="true"
         />
         <div
-          className={`brutal relative -rotate-3 transition-[transform,background-color] duration-300 group-hover:rotate-0 ${slide.card[0]}`}
+          className={`brutal relative -rotate-3 transition-[transform,background-color] duration-300 group-hover:rotate-0 ${getCollection(product.collection)!.bg}`}
         >
           <div key={product.slug} className="motion-safe:animate-spray-in">
             <ProductArt product={product} className="w-full p-4" />

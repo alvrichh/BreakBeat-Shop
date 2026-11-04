@@ -6,6 +6,7 @@ import { addToCart } from "@/lib/cart";
 import {
   formatPrice,
   KIND_LABELS,
+  getCollection,
   LEVEL_LABELS,
   LINE_LABELS,
   type Product,
@@ -14,6 +15,7 @@ import {
 import { ProductArt } from "./ProductArt";
 
 export function BuyBox({ product }: { product: Product }) {
+  const collection = getCollection(product.collection)!;
   const [color, setColor] = useState(product.colors[0].hex);
   const [size, setSize] = useState<Size | null>(
     product.sizes.length === 1 ? product.sizes[0] : null,
@@ -35,8 +37,8 @@ export function BuyBox({ product }: { product: Product }) {
   return (
     <div className="mt-6 grid gap-10 md:grid-cols-2">
       <div className="relative self-start">
-        <div className="brutal absolute inset-3 rotate-3 bg-pink" aria-hidden="true" />
-        <div className="brutal relative -rotate-1 bg-yolk">
+        <div className="brutal absolute inset-3 rotate-3 bg-asphalt-2" aria-hidden="true" />
+        <div className={`brutal relative -rotate-1 ${collection.bg}`}>
           <ProductArt product={product} colorHex={color} className="w-full p-6" />
         </div>
       </div>

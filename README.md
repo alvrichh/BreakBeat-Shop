@@ -8,6 +8,16 @@ Tienda online de ropa de calle con estética **breakbeat, graffiti y kataneo**: 
 
 Solo ropa y complementos: camisetas, sudaderas, pantalones, gorras, pegatinas, lanyards, lonas y banderas.
 
+Tres colecciones, cada una con su color de fondo:
+
+- ☀️ **Summer** (amarillo): camisetas, gorras, lonas y banderas pa la feria y los festis.
+- ❄️ **Winter** (azul): sudaderas y chándal.
+- 📼 **Retro** (rosa): tags, breaks y makineo de los 90.
+
+En la tienda se ven todas mezcladas; cada colección tiene además su página (`/coleccion/summer`, `/coleccion/winter`, `/coleccion/retro`).
+
+Dentro de cada colección hay líneas:
+
 - **Pa ellas**: leopardo, rosa chicle y brillitos.
 - **Pa ellos**: oso asesino, llamas y oro.
 - **Pa tos**: lo de toda la vida (tags, breakbeat) y complementos.
@@ -44,7 +54,7 @@ Otros comandos:
 
 ```
 src/
-├── app/                 Páginas (inicio, /tienda, /producto/[slug], /carrito)
+├── app/                 Páginas (inicio, /tienda, /coleccion/[slug], /producto/[slug], /carrito)
 ├── components/          UI: cabecera, tarjetas, mockups SVG, carrito…
 └── lib/
     ├── products.ts      Catálogo (temporal, hasta conectar Printful)
