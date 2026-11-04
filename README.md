@@ -1,28 +1,54 @@
-# BreakBeat-Shop
-### Documentación de la API en POSTMAN:
-[![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white "Postman")](https://documenter.getpostman.com/view/32189113/2sA2xcZZwe)
+# BreakBeat Shop
 
-El proyecto en principio es una plataforma online de diseños para camisetas, el usuario anónimo puede ver, filtrar y buscar camisetas.
-El usuario registrado puede subir sus propios diseños y especificar en que tipo de artículo quiere venderlo (camiseta, sudadera, pantalones, tazas, pegatinas, ect)
-El administrador puede crear usuarios de prueba y productos de ejemplo.
+Tienda online de ropa de calle con estética **breakbeat, graffiti y kataneo**: colores de bote de spray, letras con goteo y mucho ritmo.
 
-## Idea principal:
-La idea principal es enfocar la web como un sitio en el que todos los usuarios puedan crear sus propios diseños y que tengan su "galería de arte" estos usuarios pueden vender su arte como NFT o hacer merchandaising con productos. 
+> 🚧 **En construcción.** Todavía no se cobra nada. Los pagos llegarán con Stripe y la producción/envío con impresión bajo pedido (Printful).
 
-Será parecida a una red social.
-![image](https://github.com/alvrichh/BreakBeat-Shop/assets/81918923/3401274d-ad76-4735-95f9-68fe7c17b44f)
+## Tecnología
 
+- [Next.js 16](https://nextjs.org/) (App Router, React 19, TypeScript)
+- Tailwind CSS 4
+- Despliegue previsto en Vercel
 
-![image](https://github.com/alvrichh/BreakBeat-Shop/assets/81918923/86132151-eb01-433c-8ec8-4fa6c9083018)
-![image](https://github.com/alvrichh/BreakBeat-Shop/assets/81918923/a33bdc14-d335-4252-8b15-57a03ac43241)
+## Arrancar en local
 
+Requiere Node 20.9 o superior.
 
-## Paquetes:
+```bash
+npm install
+npm run dev
+```
 
-* config
-* controller
-* dto
-* entities
-* error
-* repository
-* service
+Abre <http://localhost:3000>.
+
+Otros comandos:
+
+| Comando | Qué hace |
+|---|---|
+| `npm run build` | Compila para producción |
+| `npm start` | Sirve la compilación de producción |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | Genera los tipos de rutas y pasa TypeScript |
+
+## Estructura
+
+```
+src/
+├── app/                 Páginas (inicio, /tienda, /producto/[slug], /carrito)
+├── components/          UI: cabecera, tarjetas, mockups SVG, carrito…
+└── lib/
+    ├── products.ts      Catálogo (temporal, hasta conectar Printful)
+    └── cart.ts          Carrito en el navegador (localStorage)
+legacy/                  API antigua en Spring Boot (ya no se usa)
+```
+
+## Hoja de ruta
+
+1. ✅ **Identidad visual y web**: inicio, catálogo con filtros, ficha de producto, carrito.
+2. ⬜ **Pagos**: Stripe Checkout en modo test.
+3. ⬜ **Producción**: catálogo, mockups y pedidos automáticos con Printful.
+4. ⬜ **Lanzamiento**: dominio, páginas legales (aviso legal, privacidad, cookies, devoluciones) y Stripe en modo real.
+
+## Proyecto anterior
+
+La primera versión era una API REST en Spring Boot (JWT, MySQL). Se conserva en [`legacy/`](./legacy) solo como referencia; no forma parte de la tienda nueva. Sus claves se han sacado a variables de entorno, pero las antiguas siguen en el historial de git, así que deben considerarse comprometidas.
