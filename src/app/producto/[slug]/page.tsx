@@ -25,7 +25,12 @@ export default async function ProductPage({ params }: PageProps<"/producto/[slug
 
   const related = products
     .filter((p) => p.slug !== product.slug)
-    .sort((a, b) => Number(b.kind === product.kind) - Number(a.kind === product.kind))
+    .map((p) => ({
+      p,
+      score: Number(p.line === product.line) * 2 + Number(p.kind === product.kind),
+    }))
+    .sort((a, b) => b.score - a.score)
+    .map(({ p }) => p)
     .slice(0, 4);
 
   return (

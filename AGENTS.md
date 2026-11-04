@@ -12,6 +12,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 - Tienda en Next.js 16 (App Router, Cache Components y Partial Prefetching activados) + Tailwind 4.
 - Textos de la web en español con tono **cani** (illo, quillo, pisha, mañaneo, popopo, kataneo, grafiteo…). Precios, envíos, devoluciones y avisos de pago tienen que entenderse siempre a la primera; las páginas legales irán en español normal.
+- Solo se vende ropa y complementos: camisetas, sudaderas, pantalones, gorras, pegatinas, lanyards, lonas y banderas. Cada producto tiene **línea** (`ellas`: leopardo, rosa, brillitos · `ellos`: oso asesino, llamas, oro · `tos`) y **nivel** (`discreto`: diseño pequeño, sin llamas · `mortal`: cani a tope). El dibujo de cada producto sale de `art` (tag u oso, leopardo, llamas, brillos) en `src/components/ProductArt.tsx`.
+- No usar grupos étnicos como etiqueta de estilo en los textos; describir el look (oro, brillos, fuego, leopardo).
 - Catálogo en `src/lib/products.ts`; precios siempre en céntimos (enteros). El carrito (`src/lib/cart.ts`) solo guarda slug/color/talla/cantidad; los precios se recalculan desde el catálogo y, cuando haya Stripe, se validarán en el servidor.
 - Identidad visual: tokens de color y fuentes en `src/app/globals.css` (`asphalt`, `chalk`, `pink`, `acid`, `cyan`, `yolk`, `flame`, `violet`; fuentes `graffiti`, `display`, `marker`, `sans`). Respetar `prefers-reduced-motion`.
 - En cada cambio visual, revisar escritorio y móvil sin scroll horizontal.

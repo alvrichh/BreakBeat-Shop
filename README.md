@@ -4,6 +4,16 @@ Tienda online de ropa de calle con estética **breakbeat, graffiti y kataneo**: 
 
 > 🚧 **En construcción.** Todavía no se cobra nada. Los pagos llegarán con Stripe y la producción/envío con impresión bajo pedido (Printful).
 
+## Catálogo
+
+Solo ropa y complementos: camisetas, sudaderas, pantalones, gorras, pegatinas, lanyards, lonas y banderas.
+
+- **Pa ellas**: leopardo, rosa chicle y brillitos.
+- **Pa ellos**: oso asesino, llamas y oro.
+- **Pa tos**: lo de toda la vida (tags, breakbeat) y complementos.
+
+Cada producto es **discreto** (detalle pequeño) o **mortal** (cani a tope).
+
 ## Tecnología
 
 - [Next.js 16](https://nextjs.org/) (App Router, React 19, TypeScript)

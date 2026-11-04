@@ -11,7 +11,9 @@ export function CartView() {
   if (cart.length === 0) {
     return (
       <div className="brutal mt-8 bg-asphalt-2 p-8 text-center">
-        <p className="font-marker text-2xl text-chalk">Illo, esto ta más vacío ke la pista a las 7 de la mañana.</p>
+        <p className="font-marker text-2xl text-chalk">
+          Illo, esto ta más vacío ke la pista a las 7 de la mañana.
+        </p>
         <Link
           href="/tienda"
           className="brutal brutal-hover mt-6 inline-block bg-acid px-6 py-3 font-display text-asphalt uppercase"

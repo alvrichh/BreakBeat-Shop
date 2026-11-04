@@ -42,6 +42,25 @@
   }
 }
 
+/* Brillos del estampado (ProductArt) */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.25;
+    transform: scale(0.45) rotate(45deg);
+  }
+}
+
+.twinkle {
+  animation: twinkle 1.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);

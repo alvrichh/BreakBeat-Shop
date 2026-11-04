@@ -3,12 +3,21 @@
 import Link from "next/link";
 import { useState } from "react";
 import { addToCart } from "@/lib/cart";
-import { formatPrice, KIND_LABELS, type Product, type Size } from "@/lib/products";
+import {
+  formatPrice,
+  KIND_LABELS,
+  LEVEL_LABELS,
+  LINE_LABELS,
+  type Product,
+  type Size,
+} from "@/lib/products";
 import { ProductArt } from "./ProductArt";
 
 export function BuyBox({ product }: { product: Product }) {
   const [color, setColor] = useState(product.colors[0].hex);
-  const [size, setSize] = useState<Size | null>(product.sizes.length === 1 ? product.sizes[0] : null);
+  const [size, setSize] = useState<Size | null>(
+    product.sizes.length === 1 ? product.sizes[0] : null,
+  );
   const [added, setAdded] = useState(false);
   const [missingSize, setMissingSize] = useState(false);
 
@@ -33,7 +42,20 @@ export function BuyBox({ product }: { product: Product }) {
       </div>
 
       <div>
-        <p className="font-display text-sm text-concrete uppercase">{KIND_LABELS[product.kind]}</p>
+        <div className="flex flex-wrap items-center gap-2">
+          <p className="font-display text-sm text-concrete uppercase">
+            {LINE_LABELS[product.line]} · {KIND_LABELS[product.kind]}
+          </p>
+          <span
+            className={`border-2 border-black px-2 py-0.5 font-display text-xs uppercase ${
+              product.level === "mortal"
+                ? "rotate-3 bg-[#c8102e] text-chalk"
+                : "-rotate-2 bg-chalk text-asphalt"
+            }`}
+          >
+            {LEVEL_LABELS[product.level]}
+          </span>
+        </div>
         <h1 className="mt-1 font-graffiti text-5xl leading-none text-chalk sm:text-6xl">
           {product.name}
         </h1>
@@ -63,13 +85,25 @@ export function BuyBox({ product }: { product: Product }) {
                 />
                 <span
                   className="block size-11 rounded-full border-3 border-black shadow-[3px_3px_0_#000] transition-transform peer-checked:scale-110 peer-checked:outline-3 peer-checked:outline-offset-2 peer-checked:outline-acid peer-focus-visible:outline-3 peer-focus-visible:outline-cyan"
-                  style={{ backgroundColor: c.hex }}
+                  style={{
+                    backgroundColor: c.hex,
+                    backgroundImage:
+                      product.art.pattern === "leopard"
+                        ? "radial-gradient(circle at 30% 30%, #1a1209 0 3px, transparent 4px), radial-gradient(circle at 70% 60%, #1a1209 0 3px, transparent 4px), radial-gradient(circle at 40% 78%, #1a1209 0 2px, transparent 3px)"
+                        : undefined,
+                  }}
                 />
                 <span className="sr-only">{c.name}</span>
               </label>
             ))}
           </div>
         </fieldset>
+
+        {product.sizes.length === 1 && product.sizes[0] !== "Única" && (
+          <p className="mt-6 font-display text-sm uppercase">
+            Medida: <span className="text-cyan">{product.sizes[0]}</span>
+          </p>
+        )}
 
         {product.sizes.length > 1 && (
           <fieldset className="mt-6">

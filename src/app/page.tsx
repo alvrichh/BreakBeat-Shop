@@ -3,11 +3,9 @@ import { Equalizer } from "@/components/Equalizer";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Marquee } from "@/components/Marquee";
 import { ProductCard } from "@/components/ProductCard";
-import { getFeaturedProducts } from "@/lib/products";
+import { products, type Line, type Product } from "@/lib/products";
 
 export default function Home() {
-  const featured = getFeaturedProducts();
-
   return (
     <>
       {/* HERO */}
@@ -52,12 +50,12 @@ export default function Home() {
         className="-rotate-1 bg-acid text-asphalt"
         words={[
           "Popopo",
+          "Oso asesino",
+          "Leopardo",
           "Mañaneo",
+          "Brillos",
           "Kataneo",
-          "Grafiteo",
-          "136 BPM",
-          "Illo",
-          "To flama",
+          "Fuego",
           "La kru",
         ]}
       />
@@ -68,26 +66,31 @@ export default function Home() {
           "Hecho bajo pedido",
           "Envío a toa España",
           "Tinta ke no se cuartea",
-          "Diseños der barrio",
+          "Discreto o mortal, tú eliges",
         ]}
       />
 
-      {/* DESTACADOS */}
-      <section className="mx-auto max-w-6xl px-4 pt-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="throwup font-display text-4xl text-yolk uppercase sm:text-5xl">
-            Lo ke má peta
-          </h2>
-          <Link href="/tienda" className="font-marker text-lg hover:text-acid">
-            Ver tó, quillo →
-          </Link>
-        </div>
-        <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-8 lg:grid-cols-4">
-          {featured.map((product, index) => (
-            <ProductCard key={product.slug} product={product} index={index} />
-          ))}
-        </div>
-      </section>
+      <Shelf
+        title="Pa ellas"
+        subtitle="Leopardo, rosa chicle y brillitos. Reina del polígono."
+        color="text-pink"
+        shadow="[--throwup-shadow:var(--color-yolk)]"
+        products={byLine("ellas")}
+      />
+      <Shelf
+        title="Pa ellos"
+        subtitle="Oso asesino, llamas y oro. Lo má mortal de la casa."
+        color="text-flame"
+        shadow="[--throwup-shadow:var(--color-violet)]"
+        products={byLine("ellos")}
+      />
+      <Shelf
+        title="Pa tos"
+        subtitle="Lonas pa el balcón, banderas pa el festi, lanyards y pegatinas."
+        color="text-acid"
+        shadow="[--throwup-shadow:var(--color-pink)]"
+        products={products.filter((p) => ["banner", "flag", "lanyard", "sticker"].includes(p.kind))}
+      />
 
       {/* MANIFIESTO */}
       <section id="manifiesto" className="mx-auto max-w-6xl scroll-mt-24 px-4 pt-24">
@@ -118,6 +121,48 @@ export default function Home() {
         </div>
       </section>
     </>
+  );
+}
+
+/** Hasta 4 productos de una línea, los destacados primero. */
+function byLine(line: Line) {
+  return products
+    .filter((p) => p.line === line)
+    .sort((a, b) => Number(!!b.featured) - Number(!!a.featured));
+}
+
+function Shelf({
+  title,
+  subtitle,
+  color,
+  shadow,
+  products,
+}: {
+  title: string;
+  subtitle: string;
+  color: string;
+  shadow: string;
+  products: Product[];
+}) {
+  return (
+    <section className="mx-auto max-w-6xl px-4 pt-20">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 className={`throwup font-display text-4xl uppercase sm:text-5xl ${color} ${shadow}`}>
+            {title}
+          </h2>
+          <p className="mt-2 font-marker text-chalk/80">{subtitle}</p>
+        </div>
+        <Link href="/tienda" className="font-marker text-lg hover:text-acid">
+          Ver tó, quillo →
+        </Link>
+      </div>
+      <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-8 lg:grid-cols-4">
+        {products.slice(0, 4).map((product, index) => (
+          <ProductCard key={product.slug} product={product} index={index} />
+        ))}
+      </div>
+    </section>
   );
 }
 

@@ -8,8 +8,8 @@ export function SiteFooter() {
         <div>
           <p className="font-graffiti text-4xl text-acid">BreakBeat</p>
           <p className="mt-2 max-w-xs text-sm text-concrete">
-            Ropa de kalle con olor a spray. Cada pieza se imprime cuando la pides, sin ná pudriéndose
-            en un almacén. Popopo!
+            Ropa de kalle con olor a spray. Cada pieza se imprime cuando la pides, sin ná
+            pudriéndose en un almacén. Popopo!
           </p>
         </div>
         <nav aria-label="Pie de página" className="flex flex-col gap-2 text-sm">
@@ -27,8 +27,8 @@ export function SiteFooter() {
         <div className="text-sm text-concrete">
           <p className="font-display text-xs text-yolk uppercase">Ojo al dato</p>
           <p className="mt-2">
-            Tienda en obras, illo: de momento no se cobra ná. Los pagos llegan pronto con Stripe y los
-            envíos con impresión bajo pedido.
+            Tienda en obras, illo: de momento no se cobra ná. Los pagos llegan pronto con Stripe y
+            los envíos con impresión bajo pedido.
           </p>
         </div>
       </div>

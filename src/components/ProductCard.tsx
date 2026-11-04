@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatPrice, KIND_LABELS, type Product } from "@/lib/products";
+import { formatPrice, KIND_LABELS, LINE_LABELS, type Product } from "@/lib/products";
 import { ProductArt } from "./ProductArt";
 
 const TILTS = ["-rotate-1", "rotate-1", "rotate-0", "-rotate-2", "rotate-2"];
@@ -19,6 +19,15 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
           {product.badge}
         </span>
       )}
+      {product.level === "mortal" ? (
+        <span className="absolute -top-3 -right-2 z-10 rotate-6 border-2 border-black bg-[#c8102e] px-2 py-0.5 font-display text-[0.65rem] text-chalk uppercase sm:text-xs">
+          Mortal 💀
+        </span>
+      ) : (
+        <span className="absolute -top-3 -right-2 z-10 rotate-3 border-2 border-black bg-chalk px-2 py-0.5 font-display text-[0.65rem] uppercase sm:text-xs">
+          Discreto
+        </span>
+      )}
       <div className={`relative aspect-square overflow-hidden border-b-3 border-black ${backdrop}`}>
         <ProductArt
           product={product}
@@ -28,9 +37,11 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
       <div className="flex flex-1 flex-col items-start gap-2 p-2.5 sm:p-3">
         <div>
           <p className="text-[0.65rem] font-bold text-asphalt/60 uppercase sm:text-xs">
-            {KIND_LABELS[product.kind]}
+            {LINE_LABELS[product.line]} · {KIND_LABELS[product.kind]}
           </p>
-          <h3 className="font-display text-sm leading-tight uppercase sm:text-lg">{product.name}</h3>
+          <h3 className="font-display text-sm leading-tight uppercase sm:text-lg">
+            {product.name}
+          </h3>
         </div>
         <p className="mt-auto border-2 border-black bg-asphalt px-2 py-0.5 font-display text-xs text-acid sm:text-sm">
           {formatPrice(product.price)}
