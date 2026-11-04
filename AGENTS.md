@@ -18,5 +18,5 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Catálogo en `src/lib/products.ts`; precios siempre en céntimos (enteros). El carrito (`src/lib/cart.ts`) solo guarda slug/color/talla/cantidad; los precios se recalculan desde el catálogo y, cuando haya Stripe, se validarán en el servidor.
 - Identidad visual: tokens de color y fuentes en `src/app/globals.css` (`asphalt`, `chalk`, `pink`, `acid`, `cyan`, `yolk`, `flame`, `violet`; fuentes `graffiti`, `display`, `marker`, `sans`). Respetar `prefers-reduced-motion`.
 - En cada cambio visual, revisar escritorio y móvil sin scroll horizontal.
-- `legacy/` es la API Java antigua: no se usa ni se despliega. No añadir secretos al repo; usar variables de entorno (`.env.local`, ignorado por git).
+- No añadir secretos al repo; usar variables de entorno (`.env.local` en local, ignorado por git; Environment Variables en Vercel).
 - Comprobaciones: `npm run lint`, `npm run typecheck`, `npm run build`.
