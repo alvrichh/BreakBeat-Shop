@@ -11,12 +11,12 @@ export function CartView() {
   if (cart.length === 0) {
     return (
       <div className="brutal mt-8 bg-asphalt-2 p-8 text-center">
-        <p className="font-marker text-2xl text-chalk">Aquí no hay ni un tag todavía.</p>
+        <p className="font-marker text-2xl text-chalk">Illo, esto ta más vacío ke la pista a las 7 de la mañana.</p>
         <Link
           href="/tienda"
           className="brutal brutal-hover mt-6 inline-block bg-acid px-6 py-3 font-display text-asphalt uppercase"
         >
-          Ir a la tienda
+          A pillar género
         </Link>
       </div>
     );
@@ -78,7 +78,7 @@ export function CartView() {
                     onClick={() => setQuantity(key, 0)}
                     className="font-marker text-sm underline underline-offset-2 hover:text-pink"
                   >
-                    Quitar
+                    Fuera
                   </button>
                   <p className="font-display">{formatPrice(product.price * line.quantity)}</p>
                 </div>
@@ -89,7 +89,7 @@ export function CartView() {
       </ul>
 
       <aside className="brutal h-fit bg-asphalt-2 p-5">
-        <h2 className="font-display text-lg uppercase">Resumen</h2>
+        <h2 className="font-display text-lg uppercase">La cuenta</h2>
         <dl className="mt-4 space-y-2 text-sm">
           <div className="flex justify-between">
             <dt>Subtotal</dt>
@@ -97,7 +97,7 @@ export function CartView() {
           </div>
           <div className="flex justify-between text-concrete">
             <dt>Envío</dt>
-            <dd>Se calcula al pagar</dd>
+            <dd>Se calcula al soltar la pasta</dd>
           </div>
         </dl>
         <button
@@ -105,10 +105,10 @@ export function CartView() {
           disabled
           className="brutal mt-6 w-full cursor-not-allowed bg-concrete px-4 py-3 font-display text-asphalt uppercase"
         >
-          Pagar
+          Soltar la pasta
         </button>
         <p className="mt-3 font-marker text-xs text-yolk">
-          Los pagos con Stripe llegan en la siguiente fase. De momento no se cobra nada.
+          Tranqui, ke de momento no se cobra ná: los pagos con Stripe llegan en la siguiente fase.
         </p>
       </aside>
     </div>

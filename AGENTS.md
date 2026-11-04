@@ -10,7 +10,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # BreakBeat Shop — notas para agentes
 
-- Tienda en Next.js 16 (App Router, Cache Components y Partial Prefetching activados) + Tailwind 4. Textos de la web en español.
+- Tienda en Next.js 16 (App Router, Cache Components y Partial Prefetching activados) + Tailwind 4.
+- Textos de la web en español con tono **cani** (illo, quillo, pisha, mañaneo, popopo, kataneo, grafiteo…). Precios, envíos, devoluciones y avisos de pago tienen que entenderse siempre a la primera; las páginas legales irán en español normal.
 - Catálogo en `src/lib/products.ts`; precios siempre en céntimos (enteros). El carrito (`src/lib/cart.ts`) solo guarda slug/color/talla/cantidad; los precios se recalculan desde el catálogo y, cuando haya Stripe, se validarán en el servidor.
 - Identidad visual: tokens de color y fuentes en `src/app/globals.css` (`asphalt`, `chalk`, `pink`, `acid`, `cyan`, `yolk`, `flame`, `violet`; fuentes `graffiti`, `display`, `marker`, `sans`). Respetar `prefers-reduced-motion`.
 - En cada cambio visual, revisar escritorio y móvil sin scroll horizontal.

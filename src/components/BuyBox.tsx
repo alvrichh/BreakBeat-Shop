@@ -97,7 +97,7 @@ export function BuyBox({ product }: { product: Product }) {
             </div>
             {missingSize && (
               <p role="alert" className="mt-2 font-marker text-pink">
-                Elige una talla antes de pillarla.
+                ¡Eh, eh! Elige talla primero, ke no somo adivinos.
               </p>
             )}
           </fieldset>
@@ -109,22 +109,22 @@ export function BuyBox({ product }: { product: Product }) {
             onClick={handleAdd}
             className="brutal brutal-hover bg-pink px-6 py-3 font-display text-lg text-asphalt uppercase"
           >
-            Añadir al carrito
+            ¡Pa la bolsa!
           </button>
           {added && (
             <p role="status" className="font-marker text-acid">
-              ¡Dentro!{" "}
+              ¡Ahí va, pillao!{" "}
               <Link href="/carrito" className="underline underline-offset-4 hover:text-yolk">
-                Ver carrito →
+                Ver la bolsa →
               </Link>
             </p>
           )}
         </div>
 
         <ul className="mt-8 space-y-1 text-sm text-concrete">
-          <li>✦ Impreso bajo pedido en 2–5 días laborables.</li>
-          <li>✦ Envío a toda España.</li>
-          <li>✦ 14 días para devoluciones.</li>
+          <li>✦ Te lo imprimimo en 2–5 días laborables.</li>
+          <li>✦ Envío a toa España, dende Cái hasta Girona.</li>
+          <li>✦ 14 días pa devolverlo si no te mola.</li>
         </ul>
       </div>
     </div>

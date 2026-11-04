@@ -10,9 +10,10 @@ export const metadata: Metadata = {
 export default function ShopPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 pt-10">
-      <h1 className="font-graffiti text-6xl text-acid sm:text-7xl">La tienda</h1>
+      <h1 className="font-graffiti text-6xl text-acid sm:text-7xl">El género</h1>
       <p className="mt-3 max-w-xl text-chalk/80">
-        Todo lo que tenemos en la pared ahora mismo. Cada pieza se imprime cuando la pides.
+        Tó lo ke tenemo colgao en la pared ahora mismo, quillo. Cada pieza se imprime cuando la
+        pides, asín ke no te duermas.
       </p>
       <Catalog products={products} />
     </div>

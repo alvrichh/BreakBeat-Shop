@@ -17,30 +17,30 @@ export default function Home() {
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pt-10 pb-16 md:grid-cols-[1.2fr_1fr] md:pt-16">
           <div>
             <p className="inline-block -rotate-2 border-2 border-black bg-yolk px-3 py-1 font-display text-xs text-asphalt uppercase">
-              Drop 01 · ya en la calle
+              Drop 01 · ya ta en la kalle, illo
             </p>
             <h1 className="mt-5 font-graffiti text-[clamp(3.5rem,13vw,8.5rem)] leading-[0.85] text-pink">
-              <span className="block">Break</span>
-              <span className="block pl-[0.6em] text-acid">the beat</span>
+              <span className="block">Popopo</span>
+              <span className="block pl-[0.6em] text-acid">pisha!</span>
             </h1>
             <p className="mt-6 max-w-md text-lg text-chalk/85">
-              Ropa de calle con alma de <strong className="text-cyan">breakbeat</strong>,{" "}
-              <strong className="text-yolk">graffiti</strong> y noches de{" "}
-              <strong className="text-flame">kataneo</strong>. Colores que se ven desde el andén de
-              enfrente.
+              Ropa de kalle pa los ke viven el <strong className="text-cyan">breakbeat</strong>, el{" "}
+              <strong className="text-yolk">grafiteo</strong>, el{" "}
+              <strong className="text-flame">kataneo</strong> y el mañaneo hasta las tantas. Colores
+              ke se ven dende el polígono de enfrente, ¿me entiendeh?
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/tienda"
                 className="brutal brutal-hover bg-pink px-6 py-3 font-display text-lg text-asphalt uppercase"
               >
-                Ver la tienda
+                Pillar ropa
               </Link>
               <Link
                 href="#manifiesto"
                 className="font-marker text-lg text-chalk underline decoration-acid decoration-4 underline-offset-4 hover:text-acid"
               >
-                ¿Quiénes somos?
+                ¿Y vosotros quién soi?
               </Link>
             </div>
           </div>
@@ -63,22 +63,22 @@ export default function Home() {
 
       <Marquee
         className="-rotate-1 bg-acid text-asphalt"
-        words={["Break", "Beat", "Spray", "Repeat", "Wildstyle", "136 BPM", "Kataneo", "Crew"]}
+        words={["Popopo", "Mañaneo", "Kataneo", "Grafiteo", "136 BPM", "Illo", "To flama", "La kru"]}
       />
       <Marquee
         reverse
         className="rotate-1 bg-pink text-asphalt"
-        words={["Hecho bajo pedido", "Envío a toda España", "Tintas que no se cuartean", "Diseños originales"]}
+        words={["Hecho bajo pedido", "Envío a toa España", "Tinta ke no se cuartea", "Diseños der barrio"]}
       />
 
       {/* DESTACADOS */}
       <section className="mx-auto max-w-6xl px-4 pt-20">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="throwup font-display text-4xl text-yolk uppercase sm:text-5xl">
-            Lo más quemado
+            Lo ke má peta
           </h2>
           <Link href="/tienda" className="font-marker text-lg hover:text-acid">
-            Ver todo →
+            Ver tó, quillo →
           </Link>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-8 lg:grid-cols-4">
@@ -95,20 +95,21 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-center">
             <Equalizer className="h-24 md:h-40" />
             <div>
-              <h2 className="font-graffiti text-5xl text-cyan sm:text-6xl">La crew</h2>
+              <h2 className="font-graffiti text-5xl text-cyan sm:text-6xl">La kru</h2>
               <p className="mt-4 max-w-2xl text-lg text-chalk/85">
-                BreakBeat nace entre altavoces reventados y botes de spray. Cada diseño sale de
-                bocetos reales: tags, throw-ups y piezas que antes vivían en cuadernos y paredes.
+                BreakBeat nace entre bafles reventaos, botes de spray y mañaneos en el parking del
+                after. Cada diseño sale de bocetos de verdá: tags, potas y piezas ke antes vivían en
+                la libreta y en las paredes der barrio. Aquí no hay postureo, aquí hay arte, nen.
               </p>
               <ul className="mt-6 grid gap-3 font-display text-sm uppercase sm:grid-cols-3">
                 <li className="border-2 border-black bg-pink px-3 py-2 text-asphalt">
-                  Diseños propios
+                  Diseños der barrio
                 </li>
                 <li className="border-2 border-black bg-yolk px-3 py-2 text-asphalt">
-                  Impreso bajo pedido
+                  Impreso al momento
                 </li>
                 <li className="border-2 border-black bg-acid px-3 py-2 text-asphalt">
-                  Cero stock perdido
+                  Cero stock tirao
                 </li>
               </ul>
             </div>

@@ -12,7 +12,7 @@ export function Catalog({ products }: { products: Product[] }) {
   const visible = filter === "all" ? products : products.filter((p) => p.kind === filter);
 
   const options: { value: Filter; label: string }[] = [
-    { value: "all", label: "Todo" },
+    { value: "all", label: "Tó" },
     ...kinds.map((kind) => ({ value: kind, label: KIND_LABELS[kind] })),
   ];
 

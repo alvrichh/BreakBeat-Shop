@@ -41,7 +41,7 @@ export default async function ProductPage({ params }: PageProps<"/producto/[slug
 
       <section className="pt-24">
         <h2 className="throwup font-display text-3xl text-cyan uppercase [--throwup-shadow:var(--color-violet)] sm:text-4xl">
-          Más de la pared
+          Más cositas pa ti, nen
         </h2>
         <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-8 lg:grid-cols-4">
           {related.map((p, index) => (

@@ -9,7 +9,7 @@ export function CartLink() {
     <Link
       href="/carrito"
       className="brutal brutal-hover relative flex items-center gap-2 bg-acid px-3 py-1.5 font-display text-sm text-asphalt uppercase"
-      aria-label={count > 0 ? `Carrito, ${count} artículos` : "Carrito vacío"}
+      aria-label={count > 0 ? `La bolsa, ${count} artículos` : "La bolsa está vacía"}
     >
       <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true">
         <path
@@ -23,7 +23,7 @@ export function CartLink() {
         <circle cx="10" cy="20" r="1.6" fill="currentColor" />
         <circle cx="17" cy="20" r="1.6" fill="currentColor" />
       </svg>
-      <span className="hidden sm:inline">Carrito</span>
+      <span className="hidden sm:inline">La bolsa</span>
       {count > 0 && (
         <span className="absolute -top-3 -right-3 grid size-6 place-items-center rounded-full border-2 border-black bg-pink text-xs text-asphalt">
           {count}

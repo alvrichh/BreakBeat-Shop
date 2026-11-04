@@ -4,7 +4,7 @@ import { Equalizer } from "./Equalizer";
 
 const NAV = [
   { href: "/tienda", label: "Tienda" },
-  { href: "/#manifiesto", label: "La crew" },
+  { href: "/#manifiesto", label: "La kru" },
 ];
 
 export function SiteHeader() {

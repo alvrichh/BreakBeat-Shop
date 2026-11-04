@@ -11,7 +11,7 @@ const graffiti = Rubik_Wet_Paint({ variable: "--ff-graffiti", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: {
-    default: "BreakBeat — ropa de calle, graffiti y breaks",
+    default: "BreakBeat — ropa de kalle, grafiteo y breaks. Popopo!",
     template: "%s · BreakBeat",
   },
   description:
