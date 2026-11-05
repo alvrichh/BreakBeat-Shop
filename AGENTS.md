@@ -19,4 +19,5 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Identidad visual: tokens de color y fuentes en `src/app/globals.css` (`asphalt`, `chalk`, `pink`, `acid`, `cyan`, `yolk`, `flame`, `violet`; fuentes `graffiti`, `display`, `marker`, `sans`). Respetar `prefers-reduced-motion`.
 - En cada cambio visual, revisar escritorio y móvil sin scroll horizontal.
 - No añadir secretos al repo; usar variables de entorno (`.env.local` en local, ignorado por git; Environment Variables en Vercel).
+- Instagram «comenta → DM»: campañas en `src/lib/instagram/campaigns.ts`, webhook en `src/app/api/instagram/webhook/route.ts`, guía en `docs/instagram.md`. Sin base de datos: no guardar estado entre peticiones salvo lo que ya hay en memoria. Nunca escribir el token de Instagram en logs ni en errores. Los textos de los DMs van en tono cani pero con precio y enlace claros.
 - Comprobaciones: `npm run lint`, `npm run typecheck`, `npm run build`.
