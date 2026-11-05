@@ -28,6 +28,7 @@ Cada producto es **discreto** (detalle pequeño) o **mortal** (cani a tope).
 
 - [Next.js 16](https://nextjs.org/) (App Router, React 19, TypeScript)
 - Tailwind CSS 4
+- Instagram API (webhooks) para el «comenta → DM»
 - Despliegue previsto en Vercel
 
 ## Arrancar en local
@@ -63,16 +64,25 @@ Las claves (Stripe, proveedor de impresión…) van en **Settings → Environmen
 ```
 src/
 ├── app/                 Páginas (inicio, /tienda, /coleccion/[slug], /producto/[slug], /carrito)
+├── app/api/instagram/   Webhook de Instagram (comenta → DM)
 ├── components/          UI: cabecera, tarjetas, mockups SVG, carrito…
 └── lib/
     ├── products.ts      Catálogo: colecciones, líneas, niveles y diseño de cada producto
-    └── cart.ts          Carrito en el navegador (localStorage)
+    ├── cart.ts          Carrito en el navegador (localStorage)
+    └── instagram/       Campañas de Instagram y llamadas a la API de Meta
 ```
+
+## Instagram: comenta → DM
+
+Si alguien comenta `OSO` en un reel (o lo manda por DM o en respuesta a una Story), le llega un DM con el botón al producto, y una respuesta pública bajo el comentario. Las campañas se definen en `src/lib/instagram/campaigns.ts`.
+
+Necesita una cuenta profesional de Instagram, una app de Meta y cuatro variables de entorno (ver `.env.example`). Paso a paso y limitaciones en [docs/instagram.md](docs/instagram.md).
 
 ## Hoja de ruta
 
 1. ✅ **Identidad visual y web**: inicio, colecciones, catálogo con filtros, ficha de producto, carrito.
    - ⬜ Publicar en Vercel.
+   - 🟨 **Instagram comenta → DM**: código listo; falta la app de Meta, las variables en Vercel y la revisión de Meta.
 2. ⬜ **Pagos**: Stripe Checkout en modo test.
 3. ⬜ **Producción**: catálogo, mockups y pedidos automáticos con Printful.
 4. ⬜ **Lanzamiento**: dominio, páginas legales (aviso legal, privacidad, cookies, devoluciones) y Stripe en modo real.
