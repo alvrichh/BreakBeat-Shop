@@ -1,28 +1,82 @@
-# BreakBeat-Shop
-### Documentación de la API en POSTMAN:
-[![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white "Postman")](https://documenter.getpostman.com/view/32189113/2sA2xcZZwe)
+# BreakBeat Shop
 
-El proyecto en principio es una plataforma online de diseños para camisetas, el usuario anónimo puede ver, filtrar y buscar camisetas.
-El usuario registrado puede subir sus propios diseños y especificar en que tipo de artículo quiere venderlo (camiseta, sudadera, pantalones, tazas, pegatinas, ect)
-El administrador puede crear usuarios de prueba y productos de ejemplo.
+Tienda online de ropa de calle con estética **breakbeat, graffiti y kataneo**: colores de bote de spray, letras con goteo y mucho ritmo.
 
-## Idea principal:
-La idea principal es enfocar la web como un sitio en el que todos los usuarios puedan crear sus propios diseños y que tengan su "galería de arte" estos usuarios pueden vender su arte como NFT o hacer merchandaising con productos. 
+> 🚧 **En construcción.** Todavía no se cobra nada. Los pagos llegarán con Stripe y la producción/envío con impresión bajo pedido (Printful).
 
-Será parecida a una red social.
-![image](https://github.com/alvrichh/BreakBeat-Shop/assets/81918923/3401274d-ad76-4735-95f9-68fe7c17b44f)
+## Catálogo
 
+Solo ropa y complementos: camisetas, sudaderas, pantalones, gorras, pegatinas, lanyards, lonas y banderas.
 
-![image](https://github.com/alvrichh/BreakBeat-Shop/assets/81918923/86132151-eb01-433c-8ec8-4fa6c9083018)
-![image](https://github.com/alvrichh/BreakBeat-Shop/assets/81918923/a33bdc14-d335-4252-8b15-57a03ac43241)
+Tres colecciones, cada una con su color de fondo:
 
+- ☀️ **Summer** (amarillo): camisetas, gorras, lonas y banderas pa la feria y los festis.
+- ❄️ **Winter** (azul): sudaderas y chándal.
+- 📼 **Retro** (rosa): tags, breaks y makineo de los 90.
 
-## Paquetes:
+En la tienda se ven todas mezcladas; cada colección tiene además su página (`/coleccion/summer`, `/coleccion/winter`, `/coleccion/retro`).
 
-* config
-* controller
-* dto
-* entities
-* error
-* repository
-* service
+Dentro de cada colección hay líneas:
+
+- **Pa ellas**: leopardo, rosa chicle y brillitos.
+- **Pa ellos**: oso asesino, llamas y oro.
+- **Pa tos**: lo de toda la vida (tags, breakbeat) y complementos.
+
+Cada producto es **discreto** (detalle pequeño) o **mortal** (cani a tope).
+
+## Tecnología
+
+- [Next.js 16](https://nextjs.org/) (App Router, React 19, TypeScript)
+- Tailwind CSS 4
+- Despliegue previsto en Vercel
+
+## Arrancar en local
+
+Requiere Node 20.9 o superior.
+
+```bash
+npm install
+npm run dev
+```
+
+Abre <http://localhost:3000>.
+
+Otros comandos:
+
+| Comando | Qué hace |
+|---|---|
+| `npm run build` | Compila para producción |
+| `npm start` | Sirve la compilación de producción |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | Genera los tipos de rutas y pasa TypeScript |
+
+## Desplegar en Vercel
+
+1. Entra en [vercel.com](https://vercel.com) con tu cuenta de GitHub.
+2. **Add New → Project** e importa `BreakBeat-Shop`. Vercel detecta Next.js solo; no hay que tocar nada.
+3. Cada push a `main` publica la web, y cada PR tiene su propia vista previa.
+
+Las claves (Stripe, proveedor de impresión…) van en **Settings → Environment Variables** de Vercel, nunca en el repo.
+
+## Estructura
+
+```
+src/
+├── app/                 Páginas (inicio, /tienda, /coleccion/[slug], /producto/[slug], /carrito)
+├── components/          UI: cabecera, tarjetas, mockups SVG, carrito…
+└── lib/
+    ├── products.ts      Catálogo: colecciones, líneas, niveles y diseño de cada producto
+    └── cart.ts          Carrito en el navegador (localStorage)
+```
+
+## Hoja de ruta
+
+1. ✅ **Identidad visual y web**: inicio, colecciones, catálogo con filtros, ficha de producto, carrito.
+   - ⬜ Publicar en Vercel.
+2. ⬜ **Pagos**: Stripe Checkout en modo test.
+3. ⬜ **Producción**: catálogo, mockups y pedidos automáticos con Printful.
+4. ⬜ **Lanzamiento**: dominio, páginas legales (aviso legal, privacidad, cookies, devoluciones) y Stripe en modo real.
+
+## Proyecto anterior
+
+La primera versión era una API REST en Spring Boot (JWT, MySQL). Se retiró del repositorio al rehacer la tienda; sigue disponible en el historial de git. Sus claves antiguas (JWT y Pexels) quedaron públicas en ese historial, así que deben considerarse comprometidas y no reutilizarse.
