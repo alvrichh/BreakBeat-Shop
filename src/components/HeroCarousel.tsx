@@ -29,17 +29,17 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
-    top: "Popopo",
-    bottom: "pisha!",
+    top: "BreakBeat",
+    bottom: "Potente",
     colors: ["text-pink", "text-acid"],
-    product: "amen-break",
+    product: "breakbeat-potente",
     back: "bg-cyan",
   },
   {
-    top: "Camisetas",
-    bottom: "bomba",
+    top: "I love",
+    bottom: "breakbeat",
     colors: ["text-yolk", "text-pink"],
-    product: "oso-asesino",
+    product: "i-love-breakbeat",
     back: "bg-flame",
   },
   {
@@ -57,10 +57,10 @@ const SLIDES: Slide[] = [
     back: "bg-flame",
   },
   {
-    top: "Mañaneo",
-    bottom: "del karajo",
+    top: "Colombo",
+    bottom: "es mi padre",
     colors: ["text-flame", "text-cyan"],
-    product: "lona-mananeo",
+    product: "colombo-es-mi-padre",
     back: "bg-acid",
   },
   {
@@ -71,17 +71,17 @@ const SLIDES: Slide[] = [
     back: "bg-pink",
   },
   {
-    top: "Reina",
-    bottom: "del barrio",
+    top: "Only",
+    bottom: "Retro",
     colors: ["text-pink", "text-cyan"],
-    product: "reina-del-barrio",
+    product: "only-retro-ninja",
     back: "bg-pink",
   },
   {
-    top: "Diseños",
-    bottom: "mortales",
+    top: "Potente",
+    bottom: "al cuello",
     colors: ["text-cyan", "text-pink"],
-    product: "bandera-oso",
+    product: "lanyard-breakbeat-potente",
     back: "bg-violet",
   },
 ];
@@ -205,7 +205,7 @@ export function HeroCarousel({ before, children }: Props) {
           className={`brutal relative -rotate-3 transition-[transform,background-color] duration-300 group-hover:rotate-0 ${getCollection(product.collection)!.bg}`}
         >
           <div key={product.slug} className="motion-safe:animate-spray-in">
-            <ProductArt product={product} className="w-full p-4" />
+            <ProductArt product={product} className="w-full p-4" preload={index === 0} />
           </div>
         </div>
         <span

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import type { Art, Product, ProductKind } from "@/lib/products";
 
 type Props = {
@@ -6,6 +7,7 @@ type Props = {
   /** Color del producto; por defecto el primero. Con leopardo es el fondo del estampado. */
   colorHex?: string;
   className?: string;
+  preload?: boolean;
 };
 
 /**
@@ -18,8 +20,21 @@ type Props = {
  * tag tipo throw-up u oso asesino · estampado de leopardo · llamas · brillos.
  * Los productos «discretos» llevan el diseño pequeño, sin llamas.
  */
-export function ProductArt({ product, colorHex, className }: Props) {
+export function ProductArt({ product, colorHex, className, preload = false }: Props) {
   const base = colorHex ?? product.colors[0].hex;
+  if (product.image) {
+    return (
+      <Image
+        src={product.image.src}
+        width={product.image.width}
+        height={product.image.height}
+        alt={`${product.name}, ${nameForHex(product, base)}`}
+        sizes="(min-width: 1024px) 576px, (min-width: 768px) 50vw, 100vw"
+        className={className}
+        preload={preload}
+      />
+    );
+  }
   const id = `art-${product.slug}`;
   const shape = SHAPES[product.kind];
   const { art } = product;
