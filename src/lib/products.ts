@@ -64,6 +64,8 @@ export type Product = {
   tagline: string;
   description: string;
   art: Art;
+  /** Foto de catálogo local; el dibujo vectorial se usa cuando no hay foto. */
+  image?: { src: string; width: number; height: number };
   colors: GarmentColor[];
   sizes: Size[];
   badge?: string;
@@ -161,6 +163,97 @@ export function getByCollection(collection: Collection): Product[] {
 }
 
 export const products: Product[] = [
+  // ───────────── BREAKBEAT · NUEVOS DISEÑOS ─────────────
+  {
+    slug: "breakbeat-potente",
+    name: "BreakBeat Potente",
+    kind: "tee",
+    line: "tos",
+    level: "mortal",
+    collection: "summer",
+    price: 3200,
+    tagline: "Pulpo, katanas y breaks a to volumen.",
+    description:
+      "Camiseta negra con el pulpo rojo, gafas y katanas cruzadas. BREAKBEAT POTENTE en blanco, detalles samurái y rombos. Pa los ke llevan los breaks hasta en la ropa.",
+    art: { motif: "tag", text: "BREAKBEAT POTENTE", palette: ["#ff2c32", "#ffffff", "#111114"] },
+    image: { src: "/images/products/breakbeat-potente.webp", width: 1254, height: 1254 },
+    colors: [BLACK],
+    sizes: CLOTHING_SIZES,
+    badge: "Nuevo",
+    featured: true,
+  },
+  {
+    slug: "i-love-breakbeat",
+    name: "I Love Breakbeat",
+    kind: "tee",
+    line: "tos",
+    level: "mortal",
+    collection: "summer",
+    price: 2900,
+    tagline: "Lo tuyo con los breaks es amor del bueno.",
+    description:
+      "Camiseta negra con I LOVE BREAKBEAT en letras graffiti, corazón rosa y detalles en verde ácido y cian. Una declaración de amor a los ritmos rotos, illo.",
+    art: { motif: "tag", text: "I LOVE BREAKBEAT", palette: ["#f4f1ea", "#b6ff00", "#00e5ff"] },
+    image: { src: "/images/products/i-love-breakbeat.webp", width: 1254, height: 1254 },
+    colors: [BLACK],
+    sizes: CLOTHING_SIZES,
+    badge: "Nuevo",
+    featured: true,
+  },
+  {
+    slug: "colombo-es-mi-padre",
+    name: "Colombo es mi padre",
+    kind: "tee",
+    line: "tos",
+    level: "mortal",
+    collection: "summer",
+    price: 2900,
+    tagline: "La frase ke se entiende en la pista.",
+    description:
+      "COLOMBO ES MI PADRE en letras graffiti amarillas con contorno rosa, un vinilo y ondas de sonido sobre camiseta negra. Un guiño de fan pa los ke viven el breakbeat.",
+    art: { motif: "tag", text: "COLOMBO ES MI PADRE", palette: [GOLD, "#ff2d95", "#f4f1ea"] },
+    image: { src: "/images/products/colombo-es-mi-padre.webp", width: 1254, height: 1254 },
+    colors: [BLACK],
+    sizes: CLOTHING_SIZES,
+    badge: "Nuevo",
+    featured: true,
+  },
+  {
+    slug: "only-retro-ninja",
+    name: "Only Retro · Ninja",
+    kind: "tee",
+    line: "tos",
+    level: "mortal",
+    collection: "summer",
+    price: 3200,
+    tagline: "El ninja del vinilo. Only retro, pisha.",
+    description:
+      "Camiseta negra con un ninja DJ a los platos, auriculares y vinilo. ONLY RETRO en cian y verde ácido, con trazos blancos y detalles rosa. Pa llevar la vieja escuela puesta.",
+    art: { motif: "tag", text: "ONLY RETRO", palette: ["#00e5ff", "#b6ff00", "#f4f1ea"] },
+    image: { src: "/images/products/only-retro-ninja.webp", width: 1254, height: 1254 },
+    colors: [BLACK],
+    sizes: CLOTHING_SIZES,
+    badge: "Nuevo",
+    featured: true,
+  },
+  {
+    slug: "lanyard-breakbeat-potente",
+    name: "Lanyard BreakBeat Potente",
+    kind: "lanyard",
+    line: "tos",
+    level: "mortal",
+    collection: "retro",
+    price: 900,
+    tagline: "Las llaves también van a ritmo de breaks.",
+    description:
+      "Cinta de poliéster roja, negra y blanca con BREAKBEAT POTENTE, el pulpo con katanas, máscaras samurái y rombos. Mosquetón metálico pa las llaves o la acreditación del festi.",
+    art: { motif: "tag", text: "BREAKBEAT POTENTE", palette: ["#ffffff", "#ff2c32", "#111114"] },
+    image: { src: "/images/products/lanyard-breakbeat-potente.webp", width: 1254, height: 1254 },
+    colors: [{ name: "Rojo, negro y blanco", hex: "#ff2c32" }],
+    sizes: ONE_SIZE,
+    badge: "Nuevo",
+    featured: true,
+  },
   // ───────────── PA ELLAS ─────────────
   {
     slug: "mami-leopardo",

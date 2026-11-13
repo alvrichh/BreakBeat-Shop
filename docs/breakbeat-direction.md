@@ -2,7 +2,7 @@
 
 Primera exploración visual del nuevo enfoque solicitado el 13 de noviembre de 2026: frases y referencias al género como protagonistas.
 
-Estas cinco imágenes son propuestas de catálogo generadas con IA, pendientes de trasladar a productos concretos. No son artes finales de impresión ni mockups oficiales del fabricante. El catálogo y los precios existentes no se han modificado.
+Estas cinco imágenes son mockups de catálogo generados con IA e incorporados como nuevos productos. No son artes finales de impresión ni mockups oficiales del fabricante. Las imágenes web están en `public/images/products/`; las referencias originales siguen aquí.
 
 ## I LOVE BREAKBEAT
 
@@ -44,5 +44,7 @@ Mockup de lanyard de poliéster con mosquetón metálico y estampado rojo, negro
 
 Referencias originales aportadas por el usuario: [tira del lanyard](./breakbeat-concepts/reference-lanyard.png) y [emblema circular](./breakbeat-concepts/reference-emblem.png).
 
-Pendiente: definir qué diseños sustituyen a cada uno de los 20 productos y extender la dirección a sudaderas, gorras y accesorios; generar sus variantes y conectar las imágenes al catálogo.
+Los cinco diseños aparecen en portada, catálogo, ficha de producto y carrito. Las camisetas se muestran en negro y el lanyard en su combinación roja, negra y blanca. Los productos anteriores mantienen sus opciones y dibujos. Se han usado los precios del catálogo para productos equivalentes: camisetas de frase a 29 €, camisetas de ilustración a 32 € y lanyard a 9 €.
+
+Pendiente: extender la dirección a sudaderas, gorras y más accesorios, y generar variantes de color.
 
