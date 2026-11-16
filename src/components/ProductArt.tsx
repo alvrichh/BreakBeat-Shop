@@ -11,10 +11,8 @@ type Props = {
 };
 
 /**
- * Mockup vectorial de cada producto: la prenda (o lona, bandera…) y su diseño.
- *
- * Es un sustituto hasta tener los mockups reales del proveedor de impresión:
- * no pesa nada, se ve nítido a cualquier tamaño y cambia de color al instante.
+ * Mockup de catálogo para el primer color disponible. El resto de colores y los
+ * productos sin imagen usan una vista vectorial orientativa de la prenda.
  *
  * Ingredientes del diseño (ver `Art` en lib/products):
  * tag tipo throw-up u oso asesino · estampado de leopardo · llamas · brillos.
@@ -22,7 +20,7 @@ type Props = {
  */
 export function ProductArt({ product, colorHex, className, preload = false }: Props) {
   const base = colorHex ?? product.colors[0].hex;
-  if (product.image) {
+  if (product.image && base === product.colors[0].hex) {
     return (
       <Image
         src={product.image.src}
@@ -30,7 +28,7 @@ export function ProductArt({ product, colorHex, className, preload = false }: Pr
         height={product.image.height}
         alt={`${product.name}, ${nameForHex(product, base)}`}
         sizes="(min-width: 1024px) 576px, (min-width: 768px) 50vw, 100vw"
-        className={className}
+        className={`aspect-square object-contain ${className ?? ""}`}
         preload={preload}
       />
     );

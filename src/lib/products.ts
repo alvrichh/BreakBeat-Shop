@@ -273,6 +273,7 @@ export const products: Product[] = [
       glitter: true,
       palette: ["#ff2d95", "#111114", GOLD],
     },
+    image: { src: "/images/products/mami-leopardo.webp", width: 1024, height: 1024 },
     colors: [LEO_CLASSIC, LEO_PINK, LEO_SNOW],
     sizes: WIDE_SIZES,
     badge: "Reina",
@@ -290,6 +291,7 @@ export const products: Product[] = [
     description:
       "Pantalón de chándal estampado de leopardo entero, con cintura elástica y puño en el tobillo. Combínalo con la sudadera Mami Leopardo y ya eres leyenda.",
     art: { motif: "tag", text: "NENA", pattern: "leopard", palette: ["#ff2d95", "#111114", GOLD] },
+    image: { src: "/images/products/chandal-leopardo.webp", width: 1024, height: 1024 },
     colors: [LEO_CLASSIC, LEO_PINK, LEO_SNOW],
     sizes: WIDE_SIZES,
   },
@@ -305,6 +307,7 @@ export const products: Product[] = [
     description:
       "Camiseta con «REINA» en letras gordas rellenas de leopardo y brillos dorados alrededor. Algodón gordito, corte recto.",
     art: { motif: "tag", text: "REINA", glitter: true, palette: ["#ff2d95", "#d9a35b", GOLD] },
+    image: { src: "/images/products/reina-del-barrio.webp", width: 1024, height: 1024 },
     colors: [BLACK, PINK, WHITE],
     sizes: WIDE_SIZES,
     featured: true,
@@ -321,6 +324,7 @@ export const products: Product[] = [
     description:
       "Camiseta con un «nena» chiquitito en el pecho y cuatro brillitos. Pa los días ke vas de tranqui pero no tanto.",
     art: { motif: "tag", text: "NENA", glitter: true, palette: ["#ff2d95", "#ff8fc8", GOLD] },
+    image: { src: "/images/products/nena-brillitos.webp", width: 1024, height: 1024 },
     colors: [WHITE, BLACK, PINK],
     sizes: WIDE_SIZES,
     badge: "Nuevo",
@@ -337,6 +341,7 @@ export const products: Product[] = [
     description:
       "Gorra con «PRINCESA» bordao pequeñito y un brillo. Se ajusta por detrás. Discreta pa lo ke somo.",
     art: { motif: "tag", text: "PRINCESA", glitter: true, palette: ["#ff2d95", "#ffffff", GOLD] },
+    image: { src: "/images/products/gorra-princesa.webp", width: 1024, height: 1024 },
     colors: [PINK, BLACK, WHITE],
     sizes: ONE_SIZE,
   },
@@ -360,6 +365,7 @@ export const products: Product[] = [
       glitter: true,
       palette: ["#c8102e", "#ff6b00", GOLD],
     },
+    image: { src: "/images/products/oso-asesino.webp", width: 1024, height: 1024 },
     colors: [BLACK, WHITE, NAVY],
     sizes: CLOTHING_SIZES,
     badge: "El más vendío",
@@ -377,6 +383,7 @@ export const products: Product[] = [
     description:
       "El oso asesino en pequeñito en el pecho. Pa los ke saben, sabe. Pa los ke no, es un osito.",
     art: { motif: "bear", palette: ["#c8102e", "#ff6b00", GOLD] },
+    image: { src: "/images/products/oso-discreto.webp", width: 1024, height: 1024 },
     colors: [BLACK, GREY, WHITE],
     sizes: CLOTHING_SIZES,
   },
@@ -398,6 +405,7 @@ export const products: Product[] = [
       glitter: true,
       palette: [GOLD, "#c8102e", "#ff6b00"],
     },
+    image: { src: "/images/products/fuego-en-el-barrio.webp", width: 1024, height: 1024 },
     colors: [BLACK, RED, NAVY],
     sizes: CLOTHING_SIZES,
     featured: true,
@@ -414,6 +422,7 @@ export const products: Product[] = [
     description:
       "Pantalón de chándal con llamas subiendo por las piernas. Cintura elástica, bolsillos y puño en el tobillo. Lo má warro ke hay.",
     art: { motif: "tag", text: "BB", flames: true, palette: [GOLD, "#c8102e", "#ff6b00"] },
+    image: { src: "/images/products/chandal-llamas.webp", width: 1024, height: 1024 },
     colors: [BLACK, NAVY, RED],
     sizes: CLOTHING_SIZES,
     badge: "Lo má warro",
@@ -431,6 +440,7 @@ export const products: Product[] = [
     description:
       "Gorra con el oso asesino en dorao y brillos alrededor. Visera plana, se ajusta por detrás.",
     art: { motif: "bear", glitter: true, palette: [GOLD, "#ff6b00", GOLD] },
+    image: { src: "/images/products/gorra-oso-dorado.webp", width: 1024, height: 1024 },
     colors: [BLACK, RED],
     sizes: ONE_SIZE,
   },
@@ -539,6 +549,7 @@ export const products: Product[] = [
     description:
       "Lona de PVC resistente de 100×50 cm con ollaos metálicos en las esquinas y «MAÑANEO» con llamas. Pa la peña, el local o la caseta de la feria.",
     art: { motif: "tag", text: "MAÑANEO", flames: true, palette: [GOLD, "#ff2d95", "#c8102e"] },
+    image: { src: "/images/products/lona-mananeo.webp", width: 1024, height: 512 },
     colors: [BLACK, WHITE],
     sizes: ["100×50 cm"],
     featured: true,
@@ -561,6 +572,7 @@ export const products: Product[] = [
       glitter: true,
       palette: ["#c8102e", "#ff6b00", GOLD],
     },
+    image: { src: "/images/products/bandera-oso.webp", width: 1024, height: 1024 },
     colors: [BLACK, RED],
     sizes: ["90×60 cm"],
   },

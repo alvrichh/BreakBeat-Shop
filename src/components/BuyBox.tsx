@@ -36,11 +36,18 @@ export function BuyBox({ product }: { product: Product }) {
 
   return (
     <div className="mt-6 grid gap-10 md:grid-cols-2">
-      <div className="relative self-start">
-        <div className="brutal absolute inset-3 rotate-3 bg-asphalt-2" aria-hidden="true" />
-        <div className={`brutal relative -rotate-1 ${collection.bg}`}>
-          <ProductArt product={product} colorHex={color} className="w-full p-6" />
+      <div className="self-start">
+        <div className="relative">
+          <div className="brutal absolute inset-3 rotate-3 bg-asphalt-2" aria-hidden="true" />
+          <div className={`brutal relative -rotate-1 ${collection.bg}`}>
+            <ProductArt product={product} colorHex={color} className="w-full p-6" />
+          </div>
         </div>
+        {product.image && color !== product.colors[0].hex && (
+          <p role="status" className="mt-4 text-sm text-concrete">
+            Vista orientativa del color. Imagen del diseño disponible en {product.colors[0].name}.
+          </p>
+        )}
       </div>
 
       <div>
