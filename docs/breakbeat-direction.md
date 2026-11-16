@@ -52,5 +52,5 @@ El 16 de noviembre se incorporan las 12 imágenes ya generadas que estaban pendi
 
 Se publican en WebP dentro de `public/images/products/`, con un máximo de 1024 píxeles por lado y conservando su proporción. Como los cinco diseños anteriores, son visualizaciones generadas con IA, no fotografías del proveedor ni artes finales de impresión. Cada imagen corresponde al primer color del producto; los demás colores conservan la vista vectorial y muestran un aviso en la ficha. No se modifican precios, tallas ni opciones. Los ocho productos que aún no tienen imagen mantienen sus dibujos vectoriales.
 
-Pendiente: extender la dirección a sudaderas, gorras y más accesorios, y generar variantes de color.
+El catálogo ya incluye una imagen principal para sus 25 productos. Los últimos ocho mockups y sus prompts se documentan en [Imágenes restantes del catálogo](./remaining-product-images.md). Pendiente: generar variantes de color y preparar artes finales para fabricación.
 

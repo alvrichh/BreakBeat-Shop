@@ -458,6 +458,7 @@ export const products: Product[] = [
     description:
       "Seis segundos de batería ke reventaron la música pa siempre. Camiseta de algodón gordo con el tag AMEN en wildstyle rosa y verde ácido. Pa ir to fresco ar mañaneo.",
     art: { motif: "tag", text: "AMEN", palette: ["#ff2d95", "#b6ff00", "#00e5ff"] },
+    image: { src: "/images/products/amen-break.webp", width: 1024, height: 1024 },
     colors: [BLACK, WHITE],
     sizes: CLOTHING_SIZES,
     badge: "Drop 01",
@@ -474,6 +475,7 @@ export const products: Product[] = [
     description:
       "Sudadera con capucha y un tren pintao de punta a punta. Por dentro perchada, calentita, puños de canalé y estampado a to color. Pa kataneá sin pasá frío, illo.",
     art: { motif: "tag", text: "KATA", palette: ["#ffe600", "#ff6b00", "#ff2d95"] },
+    image: { src: "/images/products/kataneo-nocturno.webp", width: 1024, height: 1024 },
     colors: [BLACK, NAVY],
     sizes: CLOTHING_SIZES,
   },
@@ -489,6 +491,7 @@ export const products: Product[] = [
     description:
       "Lema de toa la vida en pequeñito en el pecho, con chorreones de spray de verdá escaneaos.",
     art: { motif: "tag", text: "SPRAY", palette: ["#00e5ff", "#ff2d95", "#ffe600"] },
+    image: { src: "/images/products/spray-or-die.webp", width: 1024, height: 1024 },
     colors: [WHITE, BLACK, GREY],
     sizes: CLOTHING_SIZES,
   },
@@ -504,6 +507,7 @@ export const products: Product[] = [
     description:
       "Gorra de seis paneles con el tag BB bordao en verde ácido. Se ajusta por detrás, pa cabezas de tos los tamaños.",
     art: { motif: "tag", text: "BB", palette: ["#b6ff00", "#ff2d95", "#00e5ff"] },
+    image: { src: "/images/products/gorra-tag.webp", width: 1024, height: 1024 },
     colors: [BLACK, NAVY],
     sizes: ONE_SIZE,
   },
@@ -519,6 +523,7 @@ export const products: Product[] = [
     description:
       "Diez pegatinas de vinilo ke aguantan el agua: el oso asesino, leopardos, llamas, tags y brillos. Pa farolas, libretas, el casco de la moto y el portátil.",
     art: { motif: "bear", glitter: true, palette: ["#c8102e", "#ff6b00", GOLD] },
+    image: { src: "/images/products/pack-pegatinas.webp", width: 1024, height: 1024 },
     colors: [WHITE],
     sizes: ONE_SIZE,
   },
@@ -534,6 +539,7 @@ export const products: Product[] = [
     description:
       "Cinta pa el cuello con «POPOPO» repetío y mosquetón metálico. Pa las llaves, la acreditación der festi o el bonobús.",
     art: { motif: "tag", text: "POPOPO", palette: ["#b6ff00", "#ff2d95", "#111114"] },
+    image: { src: "/images/products/lanyard-popopo.webp", width: 1024, height: 1024 },
     colors: [BLACK, PINK, RED],
     sizes: ONE_SIZE,
   },
@@ -588,6 +594,7 @@ export const products: Product[] = [
     description:
       "Sudadera con el oso asesino gigante, cadena de oro y brillos. Interior perchado pa ke el frío te dé igual mientras esperas en la puerta del after.",
     art: { motif: "bear", text: "OSO", glitter: true, palette: ["#c8102e", "#ff6b00", GOLD] },
+    image: { src: "/images/products/oso-de-invierno.webp", width: 1024, height: 1024 },
     colors: [GREY, BLACK, NAVY],
     sizes: CLOTHING_SIZES,
   },
@@ -603,6 +610,7 @@ export const products: Product[] = [
     description:
       "Sudadera con «MAKINA» en letras de rotulador gordo y colores flúor de los 90. Pa los ke se saben tos los temas de memoria.",
     art: { motif: "tag", text: "MAKINA", palette: ["#b6ff00", "#8a2bff", "#ff2d95"] },
+    image: { src: "/images/products/makina-95.webp", width: 1024, height: 1024 },
     colors: [BLACK, WHITE],
     sizes: CLOTHING_SIZES,
     badge: "Old school",
