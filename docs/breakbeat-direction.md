@@ -44,7 +44,13 @@ Mockup de lanyard de poliéster con mosquetón metálico y estampado rojo, negro
 
 Referencias originales aportadas por el usuario: [tira del lanyard](./breakbeat-concepts/reference-lanyard.png) y [emblema circular](./breakbeat-concepts/reference-emblem.png).
 
-Los cinco diseños aparecen en portada, catálogo, ficha de producto y carrito. Las camisetas se muestran en negro y el lanyard en su combinación roja, negra y blanca. Los productos anteriores mantienen sus opciones y dibujos. Se han usado los precios del catálogo para productos equivalentes: camisetas de frase a 29 €, camisetas de ilustración a 32 € y lanyard a 9 €.
+Los cinco diseños aparecen en portada, catálogo, ficha de producto y carrito. Las camisetas se muestran en negro y el lanyard en su combinación roja, negra y blanca. Se han usado los precios del catálogo para productos equivalentes: camisetas de frase a 29 €, camisetas de ilustración a 32 € y lanyard a 9 €.
+
+## Mockups anteriores incorporados al catálogo
+
+El 16 de noviembre se incorporan las 12 imágenes ya generadas que estaban pendientes: Mami Leopardo, Chándal Leopardo, Reina del Barrio, Nena Brillitos, Gorra Princesa, Oso Asesino, Oso Discreto, Gorra Oso Dorado, Fuego en el Barrio, Chándal Llamas, Lona Mañaneo y Bandera Oso Asesino.
+
+Se publican en WebP dentro de `public/images/products/`, con un máximo de 1024 píxeles por lado y conservando su proporción. Como los cinco diseños anteriores, son visualizaciones generadas con IA, no fotografías del proveedor ni artes finales de impresión. Cada imagen corresponde al primer color del producto; los demás colores conservan la vista vectorial y muestran un aviso en la ficha. No se modifican precios, tallas ni opciones. Los ocho productos que aún no tienen imagen mantienen sus dibujos vectoriales.
 
 Pendiente: extender la dirección a sudaderas, gorras y más accesorios, y generar variantes de color.
 
